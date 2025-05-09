@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   // target: 'static',
   app: {
-    baseURL: '/',
+    baseURL: '/kintanr.github.io/',
   },
 
 
