@@ -250,7 +250,7 @@ import js from "~/assets/images/js.png";
 import nuxtjs from "~/assets/images/nuxtjs.svg";
 import php from "~/assets/images/php.png";
 import sass from "~/assets/images/sass.png";
-import tailwind from "~/assets/images/tailwind.png";
+import tailwind from "~/assets/images/Tailwind.png";
 import postgre from "~/assets/images/postgresql.png";
 import mysql from "~/assets/images/mysql.png";
 import react from "~/assets/images/react.png";
