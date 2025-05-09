@@ -25,7 +25,7 @@
               class="w-full h-full rounded-full overflow-hidden border-8 border-indigo-950"
             >
               <UAvatar
-                v-if="item.item"
+                v-if="item?.item"
                 size="full"
                 class="object-cover"
                 :src="item.item"
