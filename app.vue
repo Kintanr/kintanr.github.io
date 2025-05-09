@@ -390,7 +390,7 @@ const projects = [
 const open = ref(false);
 const imagePrev = ref(null);
 
-function previewImage(image) {
+function previewImage(image: any) {
   open.value = true;
   imagePrev.value = image;
 }
