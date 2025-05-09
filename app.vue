@@ -17,14 +17,19 @@
         <div class="flex">
           <div class="w-42 aspect-square -mt-24">
             <UCarousel
-              v-slot="{ item }"
+              v-slot="item"
               fade
               loop
               :autoplay="{ delay: 4000 }"
               :items="carousel"
               class="w-full h-full rounded-full overflow-hidden border-8 border-indigo-950"
             >
-              <UAvatar size="full" class="object-cover" :src="item" />
+              <UAvatar
+                v-if="item.item"
+                size="full"
+                class="object-cover"
+                :src="item.item"
+              />
             </UCarousel>
           </div>
 
