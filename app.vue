@@ -133,20 +133,20 @@
             >
               <template #indicator="{ item, key }">
                 <div
-                  v-if="item.icon"
+                  v-if="item?.icon"
                   class="relative flex items-center justify-center size-full"
                 >
                   <span
                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-700 opacity-75"
                   ></span>
-                  <UIcon :name="item.icon" class="text-lg" />
+                  <UIcon :name="item?.icon" class="text-lg" />
                 </div>
                 <div v-else></div>
               </template>
 
               <template #description="{ item }">
                 <div class="mb-5">
-                  {{ item.description }}
+                  {{ item?.description }}
                 </div>
               </template>
             </UStepper>
