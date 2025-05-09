@@ -1,9 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  target: 'static',
+  // target: 'static',
   router: {
     base: '/', 
   },
+
+  nitro: {
+    preset: 'static',
+    output: {
+      dir: 'dist'
+    }
+  },
+
   css: [ '~/assets/css/styles.css', 'swiper/css'],
   
   compatibilityDate: '2024-11-01',
