@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     output: {
-      dir: '.output'
+      dir: '.output',
+      publicDir: '.output'
     }
   },
 
@@ -21,7 +22,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/icon',
-    '@nuxt/image',
+    // '@nuxt/image',
     '@nuxt/fonts',
     '@nuxt/eslint',
     'v-gsap-nuxt',
