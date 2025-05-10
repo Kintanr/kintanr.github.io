@@ -4,7 +4,7 @@
     <div class="p-10 md:p-20">
       <div class="flex md:mb-35 mb-30">
         <div
-          class="font-bold bg-gradient-to-r from-yellow-500 to-indigo-500 bg-clip-text text-transparent md:text-left text-center"
+          class="font-bold bg-gradient-to-r from-yellow-500 to-indigo-950 dark:to-indigo-500 bg-clip-text text-transparent md:text-left text-center"
         >
           <div class="md:text-6xl text-4xl">Kintan here —</div>
           <div class="md:text-5xl text-3xl">
@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <UCard class="mt-20 bg-indigo-950">
+      <UCard class="mt-20 bg-indigo-950 text-white">
         <div class="flex">
           <div class="w-42 aspect-square -mt-24">
             <UCarousel
@@ -33,7 +33,7 @@
             </UCarousel>
           </div>
 
-          <div class="ml-3">Lorem ipsum dolor sit amet,</div>
+          <div class="ml-3 mb-4 text-sky-500">Lorem ipsum dolor sit amet,</div>
         </div>
 
         <div class="grid grid-cols-6 gap-8">
@@ -68,7 +68,7 @@
       </UCard>
 
       <section class="mt-15">
-        <div class="text-xl font-bold">What I do</div>
+        <div class="text-2xl font-bold">What I do</div>
         <div class="grid grid-cols-6 gap-8 mt-5">
           <div class="col-span-6 md:col-span-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -79,7 +79,9 @@
             <div class="flex flex-wrap gap-5">
               <template v-for="(skill, key) in skills" :key="key + 'skill'">
                 <UTooltip :text="skill.title">
-                  <span class="bg-white rounded-lg py-2 px-3 flex items-center">
+                  <span
+                    class="bg-white rounded-lg py-2 px-3 flex items-center drop-shadow-xl dark:drop-shadow-none"
+                  >
                     <img
                       :src="skill.icon"
                       width="23"
@@ -123,7 +125,7 @@
           </div>
 
           <div class="col-span-2 md:col-span-1">
-            <div class="text-xl font-bold">Pengalaman Bekerja</div>
+            <div class="text-2xl font-bold">Pengalaman Bekerja</div>
             <UStepper
               orientation="vertical"
               disabled
@@ -155,11 +157,11 @@
       </section>
 
       <section class="mt-15">
-        <div class="text-xl font-bold">Projects</div>
+        <div class="text-2xl font-bold">Projects</div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5 justify-between">
           <UCard
-            class="bg-indigo-950"
+            class="dark:bg-indigo-950 border-1 border-slate-200 dark:border-none"
             v-for="(project, key) in projects"
             :key="key + 'project'"
           >
@@ -170,7 +172,7 @@
                 <template v-for="(i, key) in 2" :key="key + 'skill'">
                   <UTooltip :text="skills[i].title">
                     <span
-                      class="bg-white rounded-lg py-2 px-3 flex items-center"
+                      class="bg-white rounded-lg py-2 px-3 flex items-center border-2 border-slate-200 dark:border-none"
                     >
                       <img :src="skills[i].icon" width="18" />
                     </span>
@@ -179,8 +181,14 @@
               </div>
 
               <div class="">
-                <div class="mb-3 text-xl">{{ project.sub_title }}</div>
-                <div class="mb-3 text-2xl">{{ project.title }}</div>
+                <div
+                  class="text-l text-gray-600 dark:text-gray-400 font-medium"
+                >
+                  {{ project.sub_title }}
+                </div>
+                <div class="mb-3 text-xl text-sky-500 font-medium">
+                  {{ project.title }}
+                </div>
                 <div>
                   {{ project.description }}
                 </div>
@@ -191,7 +199,7 @@
       </section>
 
       <section class="mt-15">
-        <div class="text-xl font-bold">Training dan Sertifikat</div>
+        <div class="text-2xl font-bold">Training dan Sertifikat</div>
 
         <div class="flex flex-wrap gap-12 mt-5">
           <div
@@ -201,6 +209,7 @@
           >
             <div>
               <Swiper
+                class="drop-shadow-xl dark:drop-shadow-none"
                 :effect="'cards'"
                 :grabCursor="true"
                 :modules="[EffectCards]"
@@ -219,9 +228,13 @@
               </Swiper>
             </div>
 
-            <div>
-              <div class="mb-3 text-xl">{{ certificate.institution }}</div>
-              <div class="mb-3 text-2xl">{{ certificate.title }}</div>
+            <div class="mt-5 text-center">
+              <div class="text-l text-gray-600 dark:text-gray-400 font-medium">
+                {{ certificate.institution }}
+              </div>
+              <div class="mb-3 text-xl text-sky-500 font-medium">
+                {{ certificate.title }}
+              </div>
             </div>
           </div>
         </div>
@@ -277,21 +290,19 @@ const carousel = ["/images/profile1.JPG", "/images/profile2.jpg"];
 //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWQXKMWp7pjg1IvDzEvS8EKpDo9vrTILcgyg&s",
 // ];
 
-const images = [certificate_1, certificate_2];
-
 const certification = [
   {
-    title: "certificate - title",
+    title: "React Developer",
     start_date: "date",
     end_date: "date",
-    institution: "institution",
+    institution: "Professional Academy . Kominfo",
     image: [certificate_1, certificate_2],
   },
   {
-    title: "certificate - title",
+    title: "Google Project Management",
     start_date: "date",
     end_date: "date",
-    institution: "institution",
+    institution: "Coursera",
     image: [coursera],
   },
 ];
