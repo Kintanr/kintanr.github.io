@@ -7,7 +7,7 @@
           class="font-bold bg-gradient-to-r from-yellow-500 to-indigo-950 dark:to-indigo-500 bg-clip-text text-transparent md:text-left text-center"
         >
           <div class="md:text-6xl text-4xl">Kintan here —</div>
-          <div class="md:text-5xl text-3xl">
+          <div class="md:text-5xl text-3xl md:leading-[1.3]">
             Membuat web gak cuma fungsional, tapi juga menarik
           </div>
         </div>
@@ -34,7 +34,7 @@
           </div>
 
           <div class="md:ml-3 mb-4 text-sky-500 font-bold">
-            Kintan Umari . Frontend Developer
+            Kintan Umari · Frontend Developer
           </div>
         </div>
 
@@ -71,7 +71,7 @@
         <div class="text-2xl font-bold">What I do</div>
         <div class="grid grid-cols-6 gap-8 mt-5">
           <div class="col-span-6 md:col-span-3">
-            Saya bertanggung jawab untuk membangun dan mendesain elemen-elemen
+            Bertanggung jawab untuk membangun dan mendesain elemen-elemen
             antarmuka pengguna (user interface) yang interaktif dan responsif,
             sekaligus mengoptimalkan performa dan efisiensi aplikasi. Teknologi
             yang biasa saya gunakan termasuk
