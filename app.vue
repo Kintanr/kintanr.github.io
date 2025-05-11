@@ -51,7 +51,7 @@
           >
             <div>
               <div class="font-bold text-xl">Lets Connect</div>
-              <div class="flex flex-wrap gap-x-2 mt-2">
+              <div class="flex flex-wrap gap-x-4 mt-2">
                 <a
                   v-for="(data, key) in socials"
                   :key="key"
@@ -295,6 +295,8 @@ import "swiper/css/bundle";
 
 import linkedin from "~/assets/images/linkedin.png";
 import instagram from "~/assets/images/instagram.png";
+import github from "~/assets/images/github.png";
+import gmail from "~/assets/images/gmail.png";
 
 import bootstrap from "~/assets/images/Bootstrap.png";
 import html from "~/assets/images/html-5.png";
@@ -366,10 +368,18 @@ const socials = [
     link: "https://www.linkedin.com/in/kintan-umari-7a58911bb/",
   },
   {
-    icon: instagram,
-    link: "https://www.instagram.com/kintan_mari/",
+    icon: github,
+    link: "https://github.com/Kintanr",
+  },
+  {
+    icon: gmail,
+    link: "kintanumari178@gmail.com",
   },
 ];
+
+function containsHttps(text: string | string[]) {
+  return text.includes("https");
+}
 
 const skills = [
   {
