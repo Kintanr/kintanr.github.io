@@ -14,7 +14,7 @@
       </div>
 
       <UCard class="mt-20 bg-indigo-950 text-white">
-        <div class="flex">
+        <div class="flex md:flex-row flex-col items-center text-center">
           <div class="w-42 aspect-square -mt-24">
             <UCarousel
               v-slot="item"
@@ -33,29 +33,29 @@
             </UCarousel>
           </div>
 
-          <div class="ml-3 mb-4 text-sky-500">Lorem ipsum dolor sit amet,</div>
+          <div class="md:ml-3 mb-4 text-sky-500 font-bold">
+            Kintan Umari . Frontend Developer
+          </div>
         </div>
 
         <div class="grid grid-cols-6 gap-8">
-          <div class="col-span-6 md:col-span-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+          <div class="col-span-6 md:col-span-4 md:text-start text-center">
+            Hi, saya Kintan — Mengembangkan berbagai antarmuka pengguna yang
+            responsif dan user-friendly, serta bekerja dengan berbagai teknologi
+            modern di dunia web development. Selalu antusias, suka tantangan,
+            dan haus hal baru. Buat saya, jadi developer bukan cuma soal
+            ngoding, tapi tumbuh bareng teknologi yang terus berubah.
           </div>
-          <div
-            class="col-span-6 md:col-span-2 justify-items-start md:justify-items-center"
-          >
+          <div class="col-span-6 md:col-span-2 justify-items-center">
             <div>
               <div class="font-bold text-xl">Lets Connect</div>
               <div class="flex flex-wrap gap-x-4 mt-2">
                 <a
                   v-for="(data, key) in socials"
                   :key="key"
-                  :href="data.link"
+                  :href="
+                    containsHttps(data.link) ? data.link : 'mailto:' + data.link
+                  "
                   class="flex-none"
                   target="_blank"
                 >
@@ -71,9 +71,17 @@
         <div class="text-2xl font-bold">What I do</div>
         <div class="grid grid-cols-6 gap-8 mt-5">
           <div class="col-span-6 md:col-span-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco
+            Saya bertanggung jawab untuk membangun dan mendesain elemen-elemen
+            antarmuka pengguna (user interface) yang interaktif dan responsif,
+            sekaligus mengoptimalkan performa dan efisiensi aplikasi. Teknologi
+            yang biasa saya gunakan termasuk
+            <span class="text-sky-500">Nuxt.js</span>,
+            <span class="text-sky-500">CodeIgniter 3 (CI3)</span>, dan berbagai
+            framework CSS seperti <span class="text-sky-500"> Tailwind </span>,
+            <span class="text-sky-500">Bootstrap</span>,
+            <span class="text-sky-500">Vuetify</span>, dan lainnya. Selain itu,
+            berkolaborasi dengan tim backend untuk mengkonsumsi data dari
+            <span class="text-sky-500">API</span>.
           </div>
           <div class="col-span-6 md:col-span-3">
             <div class="flex flex-wrap gap-5">
@@ -95,7 +103,7 @@
         </div>
       </section>
 
-      <section class="mt-25">
+      <section class="md:mt-25 mt-15">
         <div class="grid grid-cols-2 gap-8 items-center">
           <div
             class="col-span-2 md:col-span-1 hidden md:block relative justify-items-center"
@@ -183,6 +191,9 @@
 
               <template #description="{ item }">
                 <div class="mb-5">
+                  <div class="font-bold">
+                    {{ item?.subtitle }}
+                  </div>
                   {{ item?.description }}
                 </div>
               </template>
@@ -352,13 +363,15 @@ const certification = [
 
 const items = ref<StepperItem[]>([
   {
-    title: "Address",
-    description: "Add your address here",
+    title: "PT. Sigma Cipta Caraka (Telkomsigma)",
+    description: "Aug 2021 – Present",
+    subtitle: "Frontend Developer",
     icon: "i-ph-map-pin-fill",
   },
   {
-    title: "Shipping",
-    description: "Set your preferred shipping method",
+    title: "PT Pertamina Persero",
+    subtitle: "Internship Full Stack Developer",
+    description: "Feb 2021 – Apr 2021",
   },
 ]);
 
