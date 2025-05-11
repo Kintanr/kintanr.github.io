@@ -98,27 +98,62 @@
       <section class="mt-25">
         <div class="grid grid-cols-2 gap-8 items-center">
           <div
-            class="col-span-2 md:col-span-1 hidden md:block justify-items-center"
+            class="col-span-2 md:col-span-1 hidden md:block relative justify-items-center"
           >
+            <img
+              :src="star"
+              class="absolute top-1/9 left-1/12 rotate-30"
+              width="40"
+              v-gsap.parallax.slower-10
+            />
+
+            <img
+              :src="star"
+              class="absolute top-1/4 left-1/3 rotate-75"
+              width="25"
+              v-gsap.parallax.faster-10
+            />
+
+            <img
+              :src="star"
+              class="absolute top-1/4 right-1/9 rotate-45"
+              width="35"
+              v-gsap.parallax.slower-20
+            />
+
+            <img
+              :src="star"
+              class="absolute bottom-1/9 right-1/5 rotate-27"
+              width="30"
+              v-gsap.parallax.slower
+            />
+
+            <img
+              :src="star"
+              class="absolute bottom-1/6 left-1/5 rotate-13"
+              width="33"
+              v-gsap.parallax.faster-20
+            />
+
             <div class="w-100 h-100 relative flex items-center justify-center">
               <img
                 :src="work_light"
-                class="absolute z-2 hidden dark:block"
+                class="absolute z-3 hidden dark:block"
                 width="370"
               />
               <img
                 :src="work_dark"
-                class="absolute z-2 block dark:hidden"
+                class="absolute z-3 block dark:hidden"
                 width="370"
               />
               <img
                 :src="gear_light"
-                class="absolute top-1/22 right-1/10 z-1 animate-[spin_9s_linear_infinite] hidden dark:block"
+                class="absolute top-1/22 right-1/10 z-1 animate-[spin_9s_linear_infinite] hidden dark:block z-2"
                 width="160"
               />
               <img
                 :src="gear_dark"
-                class="absolute top-1/22 right-1/10 z-1 animate-[spin_9s_linear_infinite] block dark:hidden"
+                class="absolute top-1/22 right-1/10 z-1 animate-[spin_9s_linear_infinite] block dark:hidden z-2"
                 width="160"
               />
             </div>
@@ -283,7 +318,13 @@ import work_dark from "~/assets/images/work-dark.png";
 import gear_light from "~/assets/images/gear-light.png";
 import gear_dark from "~/assets/images/gear-dark.png";
 
+import star from "~/assets/images/star.png";
+
 const carousel = ["/images/profile1.JPG", "/images/profile2.jpg"];
+
+useHead({
+  titleTemplate: "Kintan Umari",
+});
 
 // const carousel = [
 //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR37jdizdpf1_waSOBbNiSZnN8qOKcz1QW_kQ&s",
