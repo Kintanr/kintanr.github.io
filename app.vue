@@ -212,7 +212,10 @@
             :key="key + 'project'"
           >
             <div class="">
-              <img :src="banner" class="rounded-lg aspect-3/2 object-cover" />
+              <img
+                :src="project.image"
+                class="rounded-lg aspect-3/2 object-cover"
+              />
 
               <div class="flex flex-wrap gap-2 my-3">
                 <template v-for="(i, key) in 2" :key="key + 'skill'">
@@ -443,24 +446,28 @@ const skills = [
 
 const projects = [
   {
+    image: banner,
     title: "Project Title",
     sub_title: "Maintenance",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor i",
   },
   {
+    image: banner,
     title: "Project Title",
     sub_title: "Web Development",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco",
   },
   {
+    image: banner,
     title: "Project Title",
     sub_title: "Web Development",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco",
   },
   {
+    image: banner,
     title: "Project Title",
     sub_title: "Web Development",
     description:
