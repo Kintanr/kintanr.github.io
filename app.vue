@@ -323,6 +323,7 @@ import tailwind from "~/assets/images/Tailwind.png";
 import postgre from "~/assets/images/postgresql.png";
 import mysql from "~/assets/images/mysql.png";
 import react from "~/assets/images/react.png";
+import redis from "~/assets/images/redis_icon.png";
 
 import banner from "~/assets/images/banner.png";
 import certificate_1 from "~/assets/images/certificate-1.jpg";
@@ -335,6 +336,15 @@ import gear_light from "~/assets/images/gear-light.png";
 import gear_dark from "~/assets/images/gear-dark.png";
 
 import star from "~/assets/images/star.png";
+
+import btn from "~/assets/images/proj-BTN2.png";
+import ingenium from "~/assets/images/proj-Ingenium.png";
+import airnav from "~/assets/images/proj-Airnav.jpg";
+import taspen_itms from "~/assets/images/proj-Taspen.jpg";
+import taspen_daily from "~/assets/images/proj-Taspen2.jpg";
+import sigma from "~/assets/images/proj-Sigma.jpg";
+import sigma2 from "~/assets/images/sidex.jpg";
+import taspen_ned from "~/assets/images/proj-NED.jpg";
 
 const carousel = ["/images/profile1.JPG", "/images/profile2.jpg"];
 
@@ -442,37 +452,77 @@ const skills = [
     icon: mysql,
     title: "MySql",
   },
+  {
+    icon: redis,
+    title: "Redis",
+  },
 ];
 
 const projects = [
-  {
-    image: banner,
-    title: "Project Title",
-    sub_title: "Maintenance",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor i",
-  },
-  {
-    image: banner,
-    title: "Project Title",
-    sub_title: "Web Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco",
-  },
-  {
-    image: banner,
-    title: "Project Title",
-    sub_title: "Web Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco",
-  },
-  {
-    image: banner,
-    title: "Project Title",
-    sub_title: "Web Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco",
-  },
+{
+  image: btn,
+  tech: [js, sass, bulma, nuxtjs],
+  title: "Integrated Talent Management System BTN",
+  sub_title: "Full Cycle",
+  description:
+    "Mengembangkan antarmuka pengguna untuk modul karir dalam sistem Integrated Talent Management System milik Bank Tabungan Negara (BTN). Fokus utama proyek ini adalah merancang tampilan yang responsif, intuitif, dan sesuai dengan identitas visual perusahaan. Pengembangan dilakukan secara menyeluruh mulai dari desain, implementasi, hingga optimalisasi UI menggunakan Nuxt.js dan Bulma sebagai framework utama.",
+},
+{
+  image: airnav,
+  tech: [js, sass, nuxtjs],
+  title: "Integrated Talent Management System AirNav Indonesia",
+  sub_title: "Support",
+  description:
+    "Berperan sebagai pengembang antarmuka pengguna dalam mendukung pengembangan sistem Integrated Talent Management System milik AirNav Indonesia. Tugas meliputi penyempurnaan tampilan, penyesuaian komponen UI, serta perbaikan fungsionalitas frontend berdasarkan kebutuhan pengguna. Pengembangan dilakukan menggunakan Nuxt.js dan Vuetify untuk memastikan konsistensi dan kemudahan akses pada berbagai perangkat.",
+},
+{
+  image: ingenium,
+  tech: [js, sass, nuxtjs],
+  title: "Landing Page Ingenium",
+  sub_title: "Internal",
+  description:
+    "Mendesain dan mengembangkan landing page untuk memperkenalkan produk Ingenium milik PT Telkomsigma. Halaman ini dirancang untuk memberikan kesan profesional serta menyampaikan informasi secara efektif kepada pengguna internal perusahaan. Proyek ini menggunakan Nuxt.js dengan Buefy untuk menciptakan antarmuka yang bersih, modern, dan mudah digunakan.",
+},
+{
+  image: taspen_itms,
+  tech: [js, sass, nuxtjs],
+  title: "Integrated Talent Management System Taspen",
+  sub_title: "Full Cycle",
+  description:
+    "Melakukan pengembangan antarmuka frontend untuk modul manajemen talenta dan karir dalam sistem Integrated Talent Management System milik PT Taspen (Persero). Proyek ini mencakup pembuatan layout, integrasi komponen UI, serta penyempurnaan interaksi pengguna agar sesuai dengan standar usability perusahaan dan mudah diakses oleh seluruh karyawan.",
+},
+{
+  image: taspen_daily,
+  tech: [js, sass, nuxtjs],
+  title: "Daily Taspen",
+  sub_title: "Full Cycle",
+  description:
+    "Mengembangkan aplikasi web internal bernama Daily Taspen yang berfungsi sebagai media sosial perusahaan untuk meningkatkan komunikasi antar karyawan. Tanggung jawab mencakup perancangan desain yang menarik, implementasi antarmuka yang ramah pengguna, serta memastikan kompatibilitas dengan berbagai perangkat. Framework Nuxt.js dan Buefy digunakan untuk mendukung tampilan modern dan interaktif.",
+},
+{
+  image: taspen_ned,
+  tech: [php, redis],
+  title: "Taspen NED",
+  sub_title: "Full Cycle",
+  description:
+    "Melakukan penyesuaian antarmuka pengguna pada aplikasi NED, sebuah sistem milik PT Taspen (Persero) yang digunakan untuk pengelolaan dan pembayaran dana pensiun. Tugas utama mencakup penyesuaian frontend terhadap perubahan environment, khususnya dalam memigrasikan mekanisme manajemen sesi pengguna ke Redis, serta merombak sistem penyimpanan captcha agar terintegrasi dengan Google Cloud Storage. Penyesuaian ini dilakukan tanpa mengubah logika bisnis utama, dengan memastikan antarmuka tetap stabil, aman, dan efisien di lingkungan cloud.",
+},
+{
+  image: sigma,
+  tech: [js, sass, nuxtjs],
+  title: "Integrated Talent Management System Telkomsigma",
+  sub_title: "Full Cycle",
+  description:
+    "Mengembangkan tampilan antarmuka untuk sistem manajemen talenta dan pengembangan karir karyawan di PT Telkomsigma. Proyek ini melibatkan desain halaman-halaman yang kompleks dan integrasi berbagai komponen visual menggunakan Nuxt.js dan Vuetify, dengan fokus pada user experience yang profesional dan fungsional.",
+},
+{
+  image: sigma2,
+  tech: [js, sass, nuxtjs],
+  title: "Learning Management System Telkomsigma",
+  sub_title: "Full Cycle",
+  description:
+    "Menerapkan desain ulang pada antarmuka pengguna sistem Learning Management System (LMS) 'side-x' milik PT Telkomsigma. Proyek ini berfokus pada penyelarasan tampilan dengan panduan desain perusahaan, serta peningkatan kemudahan navigasi dan aksesibilitas pengguna menggunakan Nuxt.js dan Vuetify.",
+},
 ];
 const open = ref(false);
 const imagePrev = ref(null);
