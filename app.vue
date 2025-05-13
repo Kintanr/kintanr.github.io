@@ -329,6 +329,7 @@ import mysql from "~/assets/images/mysql.png";
 import react from "~/assets/images/react.png";
 import redis from "~/assets/images/redis_icon.png";
 import vuetify from "~/assets/images/vuetify.png";
+import codeigniter from "~/assets/images/codeigniter.png";
 
 import banner from "~/assets/images/banner.png";
 import certificate_1 from "~/assets/images/certificate-1.jpg";
@@ -455,6 +456,10 @@ const skills = [
     title: "Php",
   },
   {
+    icon: codeigniter,
+    title: "Codeigniter",
+  },
+  {
     icon: postgre,
     title: "Postgre Sql",
   },
@@ -558,8 +563,8 @@ const projects = [
     image: taspen_ned,
     tech: [
       {
-        icon: php,
-        title: "PHP",
+        icon: codeigniter,
+        title: "Codeigniter",
       },
       {
         icon: redis,
