@@ -293,7 +293,7 @@
         </div>
       </section>
 
-      <UModal v-model:open="open" class="!max-w-[800px]">
+      <UModal v-model:open="open" class="!max-w-[900px]">
         <template #content>
           <img :src="imagePrev" class="rounded-lg" />
         </template>
