@@ -213,17 +213,21 @@
           >
             <div class="">
               <img
+                @click="previewImage(project.image)"
                 :src="project.image"
                 class="rounded-lg aspect-3/2 object-cover"
               />
 
               <div class="flex flex-wrap gap-2 my-3">
-                <template v-for="(i, key) in 2" :key="key + 'skill'">
-                  <UTooltip :text="skills[i].title">
+                <template
+                  v-for="(data, key) in project.tech"
+                  :key="key + 'skill'"
+                >
+                  <UTooltip :text="data.title">
                     <span
                       class="bg-white rounded-lg py-2 px-3 flex items-center border-2 border-slate-200 dark:border-none"
                     >
-                      <img :src="skills[i].icon" width="18" />
+                      <img :src="data.icon" width="18" />
                     </span>
                   </UTooltip>
                 </template>
@@ -324,6 +328,7 @@ import postgre from "~/assets/images/postgresql.png";
 import mysql from "~/assets/images/mysql.png";
 import react from "~/assets/images/react.png";
 import redis from "~/assets/images/redis_icon.png";
+import vuetify from "~/assets/images/vuetify.png";
 
 import banner from "~/assets/images/banner.png";
 import certificate_1 from "~/assets/images/certificate-1.jpg";
@@ -337,7 +342,7 @@ import gear_dark from "~/assets/images/gear-dark.png";
 
 import star from "~/assets/images/star.png";
 
-import btn from "~/assets/images/proj-BTN2.png";
+import btn from "~/assets/images/proj-BTN.jpg";
 import ingenium from "~/assets/images/proj-Ingenium.png";
 import airnav from "~/assets/images/proj-Airnav.jpg";
 import taspen_itms from "~/assets/images/proj-Taspen.jpg";
@@ -345,6 +350,7 @@ import taspen_daily from "~/assets/images/proj-Taspen2.jpg";
 import sigma from "~/assets/images/proj-Sigma.jpg";
 import sigma2 from "~/assets/images/sidex.jpg";
 import taspen_ned from "~/assets/images/proj-NED.jpg";
+import peruri from "~/assets/images/peruri.jpg";
 
 const carousel = ["/images/profile1.JPG", "/images/profile2.jpg"];
 
@@ -362,7 +368,7 @@ const certification = [
     title: "React Developer",
     start_date: "date",
     end_date: "date",
-    institution: "Professional Academy . Kominfo",
+    institution: "Professional Academy · Kominfo",
     image: [certificate_1, certificate_2],
   },
   {
@@ -429,6 +435,10 @@ const skills = [
     title: "Bulma",
   },
   {
+    icon: vuetify,
+    title: "Vuetify",
+  },
+  {
     icon: tailwind,
     title: "Tailwind",
   },
@@ -459,70 +469,159 @@ const skills = [
 ];
 
 const projects = [
-{
-  image: btn,
-  tech: [js, sass, bulma, nuxtjs],
-  title: "Integrated Talent Management System BTN",
-  sub_title: "Full Cycle",
-  description:
-    "Mengembangkan antarmuka pengguna untuk modul karir dalam sistem Integrated Talent Management System milik Bank Tabungan Negara (BTN). Fokus utama proyek ini adalah merancang tampilan yang responsif, intuitif, dan sesuai dengan identitas visual perusahaan. Pengembangan dilakukan secara menyeluruh mulai dari desain, implementasi, hingga optimalisasi UI menggunakan Nuxt.js dan Bulma sebagai framework utama.",
-},
-{
-  image: airnav,
-  tech: [js, sass, nuxtjs],
-  title: "Integrated Talent Management System AirNav Indonesia",
-  sub_title: "Support",
-  description:
-    "Berperan sebagai pengembang antarmuka pengguna dalam mendukung pengembangan sistem Integrated Talent Management System milik AirNav Indonesia. Tugas meliputi penyempurnaan tampilan, penyesuaian komponen UI, serta perbaikan fungsionalitas frontend berdasarkan kebutuhan pengguna. Pengembangan dilakukan menggunakan Nuxt.js dan Vuetify untuk memastikan konsistensi dan kemudahan akses pada berbagai perangkat.",
-},
-{
-  image: ingenium,
-  tech: [js, sass, nuxtjs],
-  title: "Landing Page Ingenium",
-  sub_title: "Internal",
-  description:
-    "Mendesain dan mengembangkan landing page untuk memperkenalkan produk Ingenium milik PT Telkomsigma. Halaman ini dirancang untuk memberikan kesan profesional serta menyampaikan informasi secara efektif kepada pengguna internal perusahaan. Proyek ini menggunakan Nuxt.js dengan Buefy untuk menciptakan antarmuka yang bersih, modern, dan mudah digunakan.",
-},
-{
-  image: taspen_itms,
-  tech: [js, sass, nuxtjs],
-  title: "Integrated Talent Management System Taspen",
-  sub_title: "Full Cycle",
-  description:
-    "Melakukan pengembangan antarmuka frontend untuk modul manajemen talenta dan karir dalam sistem Integrated Talent Management System milik PT Taspen (Persero). Proyek ini mencakup pembuatan layout, integrasi komponen UI, serta penyempurnaan interaksi pengguna agar sesuai dengan standar usability perusahaan dan mudah diakses oleh seluruh karyawan.",
-},
-{
-  image: taspen_daily,
-  tech: [js, sass, nuxtjs],
-  title: "Daily Taspen",
-  sub_title: "Full Cycle",
-  description:
-    "Mengembangkan aplikasi web internal bernama Daily Taspen yang berfungsi sebagai media sosial perusahaan untuk meningkatkan komunikasi antar karyawan. Tanggung jawab mencakup perancangan desain yang menarik, implementasi antarmuka yang ramah pengguna, serta memastikan kompatibilitas dengan berbagai perangkat. Framework Nuxt.js dan Buefy digunakan untuk mendukung tampilan modern dan interaktif.",
-},
-{
-  image: taspen_ned,
-  tech: [php, redis],
-  title: "Taspen NED",
-  sub_title: "Full Cycle",
-  description:
-    "Melakukan penyesuaian antarmuka pengguna pada aplikasi NED, sebuah sistem milik PT Taspen (Persero) yang digunakan untuk pengelolaan dan pembayaran dana pensiun. Tugas utama mencakup penyesuaian frontend terhadap perubahan environment, khususnya dalam memigrasikan mekanisme manajemen sesi pengguna ke Redis, serta merombak sistem penyimpanan captcha agar terintegrasi dengan Google Cloud Storage. Penyesuaian ini dilakukan tanpa mengubah logika bisnis utama, dengan memastikan antarmuka tetap stabil, aman, dan efisien di lingkungan cloud.",
-},
-{
-  image: sigma,
-  tech: [js, sass, nuxtjs],
-  title: "Integrated Talent Management System Telkomsigma",
-  sub_title: "Full Cycle",
-  description:
-    "Mengembangkan tampilan antarmuka untuk sistem manajemen talenta dan pengembangan karir karyawan di PT Telkomsigma. Proyek ini melibatkan desain halaman-halaman yang kompleks dan integrasi berbagai komponen visual menggunakan Nuxt.js dan Vuetify, dengan fokus pada user experience yang profesional dan fungsional.",
-},
-{
-  image: sigma2,
-  tech: [js, sass, nuxtjs],
-  title: "Learning Management System Telkomsigma",
-  sub_title: "Full Cycle",
-  description:
-    "Menerapkan desain ulang pada antarmuka pengguna sistem Learning Management System (LMS) 'side-x' milik PT Telkomsigma. Proyek ini berfokus pada penyelarasan tampilan dengan panduan desain perusahaan, serta peningkatan kemudahan navigasi dan aksesibilitas pengguna menggunakan Nuxt.js dan Vuetify.",
-},
+  {
+    image: btn,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Integrated Talent Management System BTN",
+    sub_title: "Full Cycle",
+    description:
+      "Mengembangkan antarmuka pengguna untuk modul karir dalam sistem Integrated Talent Management System milik Bank Tabungan Negara (BTN). Fokus utama proyek ini adalah merancang tampilan yang responsif, intuitif, dan sesuai dengan identitas visual perusahaan. Pengembangan dilakukan secara menyeluruh mulai dari desain, implementasi, hingga optimalisasi UI menggunakan Nuxt.js dan Bulma sebagai framework utama.",
+  },
+  {
+    image: airnav,
+    tech: [
+      {
+        icon: vuetify,
+        title: "Vuetify",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Integrated Talent Management System AirNav Indonesia",
+    sub_title: "Support",
+    description:
+      "Berperan sebagai pengembang antarmuka pengguna dalam mendukung pengembangan sistem Integrated Talent Management System milik AirNav Indonesia. Tugas meliputi penyempurnaan tampilan, penyesuaian komponen UI, serta perbaikan fungsionalitas frontend berdasarkan kebutuhan pengguna. Pengembangan dilakukan menggunakan Nuxt.js dan Vuetify untuk memastikan konsistensi dan kemudahan akses pada berbagai perangkat.",
+  },
+  {
+    image: ingenium,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Landing Page Ingenium",
+    sub_title: "Internal",
+    description:
+      "Mendesain dan mengembangkan landing page untuk memperkenalkan produk Ingenium milik PT Telkomsigma. Halaman ini dirancang untuk memberikan kesan profesional serta menyampaikan informasi secara efektif kepada pengguna internal perusahaan. Proyek ini menggunakan Nuxt.js dengan Bulma untuk menciptakan antarmuka yang bersih, modern, dan mudah digunakan.",
+  },
+  {
+    image: taspen_itms,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Integrated Talent Management System Taspen",
+    sub_title: "Full Cycle",
+    description:
+      "Melakukan pengembangan antarmuka frontend untuk modul manajemen talenta dan karir dalam sistem Integrated Talent Management System milik PT Taspen (Persero). Proyek ini mencakup pembuatan dashboard serta layout antarmuka, integrasi komponen UI, serta penyempurnaan interaksi pengguna agar sesuai dengan standar usability perusahaan dan mudah diakses oleh seluruh karyawan.",
+  },
+  {
+    image: taspen_daily,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Daily Taspen",
+    sub_title: "Full Cycle",
+    description:
+      "Mengembangkan aplikasi web internal bernama Daily Taspen yang berfungsi sebagai media sosial perusahaan untuk meningkatkan komunikasi antar karyawan. Tanggung jawab mencakup perancangan desain yang menarik, implementasi antarmuka yang ramah pengguna, serta memastikan kompatibilitas dengan berbagai perangkat. Framework Nuxt.js dan Bulma digunakan untuk mendukung tampilan modern dan interaktif.",
+  },
+  {
+    image: taspen_ned,
+    tech: [
+      {
+        icon: php,
+        title: "PHP",
+      },
+      {
+        icon: redis,
+        title: "Redis",
+      },
+    ],
+    title: "Taspen NED",
+    sub_title: "Full Cycle",
+    description:
+      "Melakukan penyesuaian antarmuka pengguna pada aplikasi NED, sebuah sistem milik PT Taspen (Persero) yang digunakan untuk pengelolaan dan pembayaran dana pensiun. Tugas utama mencakup penyesuaian frontend terhadap perubahan environment, khususnya dalam memigrasikan mekanisme manajemen sesi pengguna ke Redis, serta merombak sistem penyimpanan captcha agar terintegrasi dengan Google Cloud Storage. Penyesuaian ini dilakukan tanpa mengubah logika bisnis utama, dengan memastikan antarmuka tetap stabil, aman, dan efisien di lingkungan cloud.",
+  },
+  {
+    image: sigma,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Integrated Talent Management System Telkomsigma",
+    sub_title: "Full Cycle",
+    description:
+      "Mengembangkan tampilan antarmuka untuk sistem manajemen talenta dan pengembangan karir karyawan di PT Telkomsigma. Proyek ini melibatkan desain halaman-halaman yang kompleks dan integrasi berbagai komponen visual menggunakan Nuxt.js dan Bulma, dengan fokus pada user experience yang profesional dan fungsional.",
+  },
+  {
+    image: sigma2,
+    tech: [
+      {
+        icon: bootstrap,
+        title: "Bootstrap",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Learning Management System Telkomsigma",
+    sub_title: "Full Cycle",
+    description:
+      "Menerapkan desain ulang pada antarmuka pengguna sistem Learning Management System (LMS) 'side-x' milik PT Telkomsigma. Proyek ini berfokus pada penyelarasan tampilan dengan panduan desain perusahaan, serta peningkatan kemudahan navigasi dan aksesibilitas pengguna menggunakan Nuxt.js dan Vuetify.",
+  },
+  {
+    image: peruri,
+    tech: [
+      {
+        icon: bulma,
+        title: "Bulma",
+      },
+      {
+        icon: nuxtjs,
+        title: "Nuxt.js",
+      },
+    ],
+    title: "Integrated Talent Management System Peruri",
+    sub_title: "Support",
+    description:
+      "Melakukan pengembangan dan optimalisasi antarmuka pengguna pada modul talent dan career dalam sistem Integrated Talent Management System milik Peruri. Fokus utama proyek ini adalah melakukan berbagai peningkatan (enhancement) terhadap fitur-fitur yang telah ada, memperbaiki performa tampilan, serta memastikan konsistensi visual dan usability pada berbagai perangkat. Pengembangan dilakukan menggunakan Nuxt.js, Vue.js, dan Sass untuk menciptakan UI yang modern, responsif, serta selaras dengan kebutuhan pengguna korporat.",
+  },
 ];
 const open = ref(false);
 const imagePrev = ref(null);
