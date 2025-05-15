@@ -299,6 +299,12 @@
         </template>
       </UModal>
     </div>
+
+    <div
+      class="md:mt-20 mt-15 mb-5 text-center dark:text-gray-400 text-gray-600"
+    >
+      &copy; Copyright {{ year }}. Made by Kintan Umari
+    </div>
   </UApp>
 </template>
 
@@ -358,6 +364,8 @@ const carousel = ["/images/profile1.JPG", "/images/profile2.jpg"];
 useHead({
   titleTemplate: "Kintan Umari",
 });
+
+const year = new Date().getFullYear();
 
 // const carousel = [
 //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR37jdizdpf1_waSOBbNiSZnN8qOKcz1QW_kQ&s",
