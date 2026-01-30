@@ -1,62 +1,214 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/Draggable';
 
-export default function Header() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+gsap.registerPlugin(Draggable);
 
+export default function PullLampDualRope() {
+  const { theme, setTheme, systemTheme } = useTheme();
+
+  /* ---------------- THEME ---------------- */
+  const resolvedTheme = theme === 'system' ? systemTheme : theme;
+  const isDark = resolvedTheme === 'dark';
+
+  /* ---------------- REFS ---------------- */
+  const lampPivotRef = useRef<HTMLDivElement>(null);
+  const pullRef = useRef<HTMLDivElement>(null);
+  const lampRopeRef = useRef<SVGPathElement>(null);
+  const pullRopeRef = useRef<SVGPathElement>(null);
+
+  /* ---------------- PHYSICS ---------------- */
+  const angle = useRef(0);
+  const velocity = useRef(0);
+  const raf = useRef<number | null>(null);
+
+  const [fallen, setFallen] = useState(false);
+
+  /* ---------------- ROPE PARAM ---------------- */
+  const LAMP_ROPE = 70;
+  const PULL_ROPE = 150;
+
+  /* ---------------- ROPE DRAW ---------------- */
+  const drawRope = (path: SVGPathElement | null, length: number, pull = 0, sway = 0) => {
+    if (!path) return;
+
+    const d = `
+      M 50 0
+      Q ${50 + sway} ${(length + pull) / 2}
+        50 ${length + pull}
+    `;
+    path.setAttribute('d', d);
+  };
+
+  /* ---------------- LAMP SWING ---------------- */
+  const startSwing = () => {
+    const gravity = 0.02;
+    const damping = 0.985;
+
+    const animate = () => {
+      velocity.current += -angle.current * gravity;
+      velocity.current *= damping;
+      angle.current += velocity.current;
+
+      gsap.set(lampPivotRef.current, {
+        rotation: angle.current * 57.3,
+      });
+
+      drawRope(lampRopeRef.current, LAMP_ROPE, 0, angle.current * 80);
+
+      if (Math.abs(velocity.current) > 0.0001) {
+        raf.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
+  };
+
+  /* ---------------- PULL CORD ---------------- */
   useEffect(() => {
-    setMounted(true);
+    if (!pullRef.current) return;
+
+    Draggable.create(pullRef.current, {
+      type: 'y',
+      bounds: { minY: 0, maxY: 20 },
+
+      onPress() {
+        if (raf.current) cancelAnimationFrame(raf.current);
+      },
+
+      onDrag() {
+        drawRope(pullRopeRef.current, PULL_ROPE, this.y, 0);
+      },
+
+      onRelease() {
+        // toggle theme
+        if (this.y > 10) {
+          setTheme(isDark ? 'light' : 'dark');
+        }
+
+        // easter egg
+        if (Math.abs(this.velocityY) > 2300) {
+          setFallen(true);
+          return;
+        }
+
+        gsap.to(this.target, {
+          y: 0,
+          duration: 0.4,
+          ease: 'elastic.out(1,0.4)',
+        });
+
+        gsap.to(
+          { pull: this.y },
+          {
+            pull: 0,
+            duration: 0.4,
+            ease: 'elastic.out(1,0.4)',
+            onUpdate() {
+              drawRope(pullRopeRef.current, PULL_ROPE, this.targets()[0].pull, 0);
+            },
+          }
+        );
+
+        startSwing();
+      },
+    });
+  }, [isDark]);
+
+  /* ---------------- FALL ---------------- */
+  useEffect(() => {
+    if (!fallen) return;
+
+    gsap.to(lampPivotRef.current, {
+      y: 700,
+      rotation: 720,
+      duration: 1.2,
+      ease: 'power4.in',
+    });
+  }, [fallen]);
+
+  /* ---------------- INIT ---------------- */
+  useEffect(() => {
+    drawRope(lampRopeRef.current, LAMP_ROPE);
+    drawRope(pullRopeRef.current, PULL_ROPE);
   }, []);
 
-  const isDark = mounted ? resolvedTheme === "dark" : false;
-
-  function toggleTheme() {
-    if (!mounted) return;
-    setTheme(isDark ? "light" : "dark");
-  }
-
   return (
-    <header className="w-full  bg-white/60 dark:bg-red-900/40 backdrop-blur-sm">
-      <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold dark:text-white">
-          My Portfolio
-        </Link>
+    <div className="fixed top-0 right-5 z-50 select-none">
+      {/* 💡 LAMP */}
+      <div ref={lampPivotRef} className="origin-top flex flex-col items-center">
+        <svg width="100" height={LAMP_ROPE}>
+          <path
+            ref={lampRopeRef}
+            stroke={isDark ? 'oklch(44.2% 0.017 285.786)' : '#9ca3af'}
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
 
-        <nav className="flex items-center gap-3">
-          <button
-            type="button"
-            aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-            onClick={toggleTheme}
-            className="inline-flex items-center justify-center h-9 w-9 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-          >
-            {isDark ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden
-              >
-                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zM4.22 4.22a1 1 0 011.42 0L6.64 5.22a1 1 0 11-1.42 1.42L4.22 5.64a1 1 0 010-1.42zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm8 6a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm5.78-11.78a1 1 0 010 1.42l-1 1a1 1 0 11-1.42-1.42l1-1a1 1 0 011.42 0zM17 9a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM6.34 14.78a1 1 0 011.42 0l1 1a1 1 0 11-1.42 1.42l-1-1a1 1 0 010-1.42zM14.78 14.78a1 1 0 010 1.42l-1 1a1 1 0 11-1.42-1.42l1-1a1 1 0 011.42 0z" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden
-              >
-                <path d="M17.293 13.293A8 8 0 116.707 2.707a7 7 0 0010.586 10.586z" />
-              </svg>
-            )}
-          </button>
-        </nav>
+        <div className="relative -mt-5">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <path
+              d="
+                M20 26
+                C20 22 24 20 28 20
+                H36
+                C40 20 44 22 44 26
+                L58 40
+                C60 43 58 45 54 45
+                H10
+                C6 45 4 43 6 40
+                Z
+              "
+              fill={isDark ? '#333' : '#202020ff'}
+            />
+
+            <path
+              d="
+                M24 45
+                H40
+                V47
+                C40 50 36 52 32 52 
+                C28 52 24 50 24 47
+                V45
+                Z
+              "
+              fill={isDark ? '#666' : '#FFE680'}
+            />
+          </svg>
+
+          {!isDark && (
+            <div
+              className="absolute top-full left-1/4 -translate-x-1/2
+                         w-[300px] h-[320px]
+                         bg-gradient-to-b from-yellow-300/40 to-transparent
+                         blur-2xl"
+            />
+          )}
+        </div>
       </div>
-    </header>
+
+      {/* 🧵 PULL CORD */}
+      <div className="absolute top-0 -right-8 flex flex-col items-center">
+        <svg width="100" height={PULL_ROPE + 10}>
+          <path
+            ref={pullRopeRef}
+            stroke={isDark ? 'oklch(44.2% 0.017 285.786)' : '#9ca3af'}
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+
+        <div
+          ref={pullRef}
+          className="w-3 h-3 rounded-full bg-zinc-400 dark:bg-zinc-600 cursor-grab -mt-5"
+        />
+      </div>
+    </div>
   );
 }
