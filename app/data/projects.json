@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Integrated Talent Management System BTN",
+    "description": "Mengembangkan modul karier untuk meningkatkan mobilitas internal karyawan melalui skema promosi terstruktur dan program rotasi lintas divisi.",
+    "tech": ["Nuxt.js", "Bulma"],
+    "stack": ["Nuxt.js", "Bulma", "Vue.js"],
+    "image": "/img/project/BTN.jpg",
+    "gradient": "from-sky-400 to-sky-600",
+    "color": "rgba(14, 165, 233, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 2,
+    "title": "Integrated Talent Management System AirNav Indonesia",
+    "description": "Mengembangkan dan mengoptimalkan modul karier dengan penyesuaian komponen antarmuka serta refactor frontend guna meningkatkan usability, fungsionalitas, dan stabilitas sistem..",
+    "tech": ["Nuxt.js", "Vuetify"],
+    "stack": ["Nuxt.js", "Bulma", "Vue.js"],
+    "image": "/img/project/Airnav.jpg",
+    "gradient": "from-sky-500 to-blue-500",
+    "color": "rgba(14, 165, 233, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 3,
+    "title": "Landing Page Ingenium",
+    "description": "Mendesain landing page produk Ingenium PT Telkomsigma dengan konsep clean & modern UI, berfokus pada efektivitas komunikasi visual dan kemudahan penggunaan untuk merepresentasikan identitas profesional perusahaan.",
+    "tech": ["Bulma", "Nuxt.js"],
+    "stack": ["Nuxt.js", "Bulma", "Vue.js"],
+    "image": "/img/project/Ingenium.png",
+    "gradient": "from-yellow-400 to-orange-600",
+    "color": "rgba(253, 224, 71, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 4,
+    "title": "Integrated Talent Management System Taspen",
+    "description": "Mengembangkan modul karier, talent management, dan internal job bidding untuk mendukung pengembangan karier karyawan, seleksi talent, serta mobilitas internal organisasi, sekaligus membangun dashboard untuk visualisasi informasi perusahaan.",
+    "tech": ["Nuxt.js", "Bulma", "Chart.js"],
+    "stack": ["Nuxt.js", "Bulma", "Vue.js", "Chart.js"],
+    "image": "/img/project/Taspen.jpg",
+    "gradient": "from-blue-500 to-blue-900",
+    "color": "rgba(14, 165, 233, 0.45)",
+    "priority": true
+  },
+  {
+    "id": 5,
+    "title": "Daily Taspen",
+    "description": "Mengembangkan sistem manajemen konten (Content Management System) untuk aplikasi Daily Taspen, guna mengelola data aktivitas dan memantau produktivitas karyawan secara terpusat dan efisien.",
+    "tech": ["Nuxt.js", "Bulma", "Chart.js"],
+    "stack": ["Nuxt.js", "Bulma", "Vue.js", "Chart.js"],
+    "image": "/img/project/Daily-taspen.jpg",
+    "gradient": "from-cyan-400 to-cyan-600",
+    "color": "rgba(6, 182, 212, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 6,
+    "title": "Taspen NED",
+    "description": "Melakukan enhancement pada website NED melalui penyesuaian antarmuka pengguna, migrasi session management ke Redis, serta integrasi penyimpanan captcha dengan Google Cloud Storage tanpa mengubah business logic utama.",
+    "tech": ["CodeIgniter", "Redis"],
+    "stack": ["CodeIgniter", "Redis", "PHP"],
+    "image": "/img/project/NED.jpg",
+    "gradient": "from-cyan-700 to-sky-900",
+    "color": "rgba(236, 72, 153, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 7,
+    "title": "Learning Management System Telkomsigma",
+    "description": "Melakukan redesain antarmuka LMS untuk menghadirkan tampilan modern yang sesuai branding perusahaan, sekaligus meningkatkan intuitivitas navigasi dan daya guna (usability) bagi semua pengguna.",
+    "tech": ["Nuxt.js", "Bootstrap"],
+    "stack": ["Nuxt.js", "Bootstrap", "Vue.js"],
+    "image": "/img/project/Sidex.jpg",
+    "gradient": "from-orange-400 to-rose-600",
+    "color": "rgba(253, 174, 71, 0.45)",
+    "priority": true
+  },
+  {
+    "id": 8,
+    "title": "Lakuemas App",
+    "description": "Mengembangkan berbagai fitur di Lakuemas, termasuk fitur LakuCicil, alur registrasi pengguna yang baru, serta fitur lainnya. Meningkatkan efisiensi distribusi pembaruan aplikasi menggunakan CodePush dan memastikan performa aplikasi yang optimal melalui perbaikan bug serta penyempurnaan fitur secara berkelanjutan.",
+    "tech": ["React Native", "NativeWind", "Firebase"],
+    "stack": ["React Native", "NativeWind", "Firebase", "Tailwind"],
+    "image": "/img/project/Lakuemas.png",
+    "gradient": "from-yellow-400 to-black",
+    "color": "rgba(253, 224, 71, 0.45)",
+    "priority": true
+  },
+  {
+    "id": 9,
+    "title": "Lakushop",
+    "description": "Mengembangkan dan melakukan maintenance aplikasi web Lakushop dengan upgrade dependency, optimasi performa aplikasi, serta implementasi Content Security Policy guna meningkatkan security dan stabilitas aplikasi",
+    "tech": ["Next.js", "Tailwind", "Firebase"],
+    "stack": ["Next.js", "React.js", "Tailwind", "Firebase"],
+    "image": "/img/project/Lakushop.png",
+    "gradient": "from-yellow-500 to-orange-700",
+    "color": "rgba(245, 200, 76, 0.45)",
+    "priority": false
+  },
+  {
+    "id": 10,
+    "title": "Lakuemas x Sukha by Livin Mandiri",
+    "description": "Mengembangkan integrasi web Lakuemas dengan platform Sukha Livin by Bank Mandiri guna mendukung proses pembelian voucher emas secara antarmuka yang modern, responsif, dan aman melalui ekosistem digital banking.",
+    "tech": ["Next.js", "Tailwind"],
+    "stack": ["Next.js", "React.js", "Tailwind"],
+    "image": "/img/project/Sukha.png",
+    "gradient": "from-sky-300 to-sky-600",
+    "color": "rgba(14, 165, 233, 0.45)",
+    "priority": false
+  }
+]

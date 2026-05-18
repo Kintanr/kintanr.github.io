@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
 import gsap from 'gsap';
-import { Draggable } from 'gsap/Draggable';
+import Draggable from 'gsap/Draggable';
 
 gsap.registerPlugin(Draggable);
 
@@ -139,11 +139,11 @@ export default function PullLampDualRope() {
   return (
     <div className="fixed top-0 right-5 z-50 select-none">
       {/* 💡 LAMP */}
-      <div ref={lampPivotRef} className="origin-top flex flex-col items-center">
+      <div ref={lampPivotRef} className="flex origin-top flex-col items-center">
         <svg width="100" height={LAMP_ROPE}>
           <path
             ref={lampRopeRef}
-            stroke={isDark ? 'oklch(44.2% 0.017 285.786)' : '#9ca3af'}
+            stroke={'oklch(44.2% 0.017 285.786)'}
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
@@ -164,7 +164,7 @@ export default function PullLampDualRope() {
                 C6 45 4 43 6 40
                 Z
               "
-              fill={isDark ? '#333' : '#202020ff'}
+              fill={'#333'}
             />
 
             <path
@@ -177,17 +177,16 @@ export default function PullLampDualRope() {
                 V45
                 Z
               "
-              fill={isDark ? '#666' : '#FFE680'}
+              fill={isDark ? '#FFE680' : '#e6e6e6ff'}
             />
           </svg>
 
-          {!isDark && (
-            <div
-              className="absolute top-full left-1/4 -translate-x-1/2
-                         w-[300px] h-[320px]
-                         bg-gradient-to-b from-yellow-300/40 to-transparent
-                         blur-2xl"
-            />
+          {isDark && (
+            // <div className="absolute top-6/9 left-4 h-[320px] w-[300px] -translate-x-1/2 bg-radial-[at_50%_0%] from-yellow-300/50 from-10% to-transparent to-75% blur-2xl [clip-path:polygon(47%_0%,64%_0%,100%_100%,0%_150%)]" />
+            <div className="absolute -top-9 left-1/2 h-[600px] w-[400px] -translate-x-1/2 overflow-hidden">
+              {/* Cahaya Lampu */}
+              <div className="absolute top-[80px] left-1/2 h-[420px] w-[320px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,220,120,0.7)_0%,rgba(255,200,80,0.4)_25%,rgba(255,200,80,0.15)_45%,transparent_75%)] [mask-image:linear-gradient(to_bottom,black_0%,black_75%,transparent_100%)] opacity-90 blur-2xl [clip-path:polygon(42%_0%,58%_0%,95%_100%,5%_100%)]" />
+            </div>
           )}
         </div>
       </div>
@@ -197,7 +196,7 @@ export default function PullLampDualRope() {
         <svg width="100" height={PULL_ROPE + 10}>
           <path
             ref={pullRopeRef}
-            stroke={isDark ? 'oklch(44.2% 0.017 285.786)' : '#9ca3af'}
+            stroke={'oklch(44.2% 0.017 285.786)'}
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
@@ -206,7 +205,7 @@ export default function PullLampDualRope() {
 
         <div
           ref={pullRef}
-          className="w-3 h-3 rounded-full bg-zinc-400 dark:bg-zinc-600 cursor-grab -mt-5"
+          className="-mt-5 h-3 w-3 cursor-grab rounded-full bg-amber-800 dark:bg-amber-700"
         />
       </div>
     </div>

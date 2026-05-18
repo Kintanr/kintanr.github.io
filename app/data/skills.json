@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "HTML5",
+    "icon": "/img/html-5.png",
+    "color": "from-orange-500 to-red-500"
+  },
+  {
+    "id": 2,
+    "name": "CSS3",
+    "icon": "/img/css3.png",
+    "color": "from-blue-400 to-blue-600"
+  },
+  {
+    "id": 3,
+    "name": "JavaScript",
+    "icon": "/img/js.png",
+    "color": "from-yellow-300 to-yellow-500"
+  },
+  {
+    "id": 4,
+    "name": "TypeScript",
+    "icon": "/img/typescript.png",
+    "color": "from-blue-700 to-blue-900"
+  },
+  {
+    "id": 5,
+    "name": "Vue.js",
+    "icon": "/img/vue.png",
+    "color": "from-green-300 to-green-700"
+  },
+  {
+    "id": 6,
+    "name": "React",
+    "icon": "/img/react.png",
+    "color": "from-cyan-300 to-cyan-400"
+  },
+  {
+    "id": 7,
+    "name": "Nuxt.js",
+    "icon": "/img/nuxtjs.svg",
+    "color": "from-green-400 to-green-500"
+  },
+  {
+    "id": 8,
+    "name": "Next.js",
+    "icon": "/img/nextjs-light.png",
+    "color": "from-black to-white"
+  },
+  {
+    "id": 9,
+    "name": "Tailwind CSS",
+    "icon": "/img/tailwind.png",
+    "color": "from-blue-400 to-blue-500"
+  },
+  {
+    "id": 10,
+    "name": "Git",
+    "icon": "/img/git.png",
+    "color": "from-orange-400 to-red-500"
+  }
+]

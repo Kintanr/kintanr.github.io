@@ -2,7 +2,12 @@
 
 import { useRef, useEffect } from 'react';
 
-export default function Home() {
+type CardProps = {
+  color?: string;
+  project: any;
+};
+
+export default function Home({ color = 'rgba(59,130,246,0.45)', project }: CardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const current = useRef({ x: 50, y: 50 });
   const target = useRef({ x: 50, y: 50 });
@@ -37,6 +42,10 @@ export default function Home() {
   const handleMouseLeave = () => {
     // target.current.x = 50;
     // target.current.y = 50;
+
+    if (!rafId.current) {
+      rafId.current = requestAnimationFrame(animate);
+    }
   };
 
   useEffect(() => {
@@ -46,18 +55,34 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-neutral-200 dark:bg-neutral-950">
-      <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="relative h-64 w-96 rounded-xl bg-neutral-900 [--gx:50%] [--gy:50%] before:pointer-events-none before:absolute before:inset-0 before:rounded-xl before:bg-[radial-gradient(circle_at_var(--gx)_var(--gy),rgba(255,255,255,0.35),transparent_65%)] before:opacity-0 before:blur-md before:transition-opacity before:duration-300 hover:before:opacity-100"
-      >
-        <div className="relative z-10 p-6 text-white">
-          <h3 className="text-xl font-semibold">Fluid Radial Gradient</h3>
-          <p className="mt-2 text-sm text-neutral-300">Radial gradient dengan inertia (fluid)</p>
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ ['--c' as any]: color } as React.CSSProperties}
+      className="relative h-full [--gx:50%] [--gy:50%] before:pointer-events-none before:absolute before:inset-0 before:rounded-xl before:bg-[radial-gradient(circle_at_var(--gx)_var(--gy),var(--c),transparent_65%)] before:opacity-0 before:blur-md before:transition-opacity before:duration-300 hover:before:opacity-100"
+    >
+      <div className="flex h-full flex-col justify-around p-6">
+        <h3 className="mb-3 text-2xl font-bold text-blue-800 dark:text-blue-400">
+          {project.title}
+        </h3>
+        <div className="flex h-full flex-col justify-between">
+          <p className="mb-4 text-slate-600 dark:text-slate-300">{project.description}</p>
+
+          {/* Tech stack */}
+          <div className="mb-6 flex flex-wrap gap-2">
+            {project?.tech?.map((tech: any) => (
+              <span
+                key={tech}
+                className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 dark:bg-slate-700 dark:text-slate-300"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
+    // </div>
   );
 }

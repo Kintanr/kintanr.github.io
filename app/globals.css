@@ -1,10 +1,16 @@
 @import 'tailwindcss';
+@plugin 'daisyui';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+/* Enable native smooth scrolling across the site */
+html {
+  scroll-behavior: smooth;
 }
 
 /* .dark {

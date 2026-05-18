@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 const FINAL_TEXT = 'KINTAN UMARI';
@@ -11,6 +11,9 @@ export default function SplitScrambleHero() {
   const leftRef = useRef<HTMLSpanElement>(null);
   const rightRef = useRef<HTMLSpanElement>(null);
   const memberRef = useRef<HTMLSpanElement>(null);
+
+  const [showSplash, setShowSplash] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let frame = 0;
@@ -45,7 +48,21 @@ export default function SplitScrambleHero() {
 
     const startSplit = () => {
       gsap
-        .timeline()
+        .timeline({
+          onComplete: () => {
+            gsap.delayedCall(3, () => {
+              if (containerRef.current) {
+                gsap.to(containerRef.current, {
+                  opacity: 0,
+                  scale: 0.95,
+                  duration: 0.6,
+                  ease: 'power2.inOut',
+                  onComplete: () => setShowSplash(false),
+                });
+              }
+            });
+          },
+        })
 
         // SPLIT + MEMBER START TOGETHER
         .to(
@@ -82,8 +99,13 @@ export default function SplitScrambleHero() {
     return () => gsap.ticker.remove(scramble);
   }, []);
 
+  if (!showSplash) return null;
+
   return (
-    <div className="fixed inset-0 z-[9999] flex h-screen w-full items-center justify-center overflow-hidden bg-black">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-[9999] flex h-screen w-full items-center justify-center overflow-hidden bg-black"
+    >
       {/* SCRAMBLE TEXT */}
       <h1
         ref={fullTextRef}
