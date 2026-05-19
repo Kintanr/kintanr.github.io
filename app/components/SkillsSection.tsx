@@ -37,7 +37,7 @@ export const SkillsSection = () => {
   return (
     <div
       id="skills"
-      className="h-auto bg-gradient-to-b from-white to-slate-50 py-10 dark:from-slate-900 dark:to-slate-950"
+      className="h-auto bg-gradient-to-b from-white to-slate-50 pt-10 dark:from-slate-900 dark:to-slate-950"
     >
       <div ref={containerRef} className="scroll-container">
         <div ref={skillsRef} className="sticky top-0 h-screen overflow-hidden pt-20">

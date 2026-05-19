@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Frontend Developer (React)",
+    "image": "/img/certificate/hackerank.png",
+    "publisher": "HackerRank",
+    "year": "Apr 2026"
+  },
+  {
+    "id": 2,
+    "name": "Google Project Management",
+    "image": "/img/certificate/coursera.jpg",
+    "publisher": "Coursera",
+    "year": "Feb 2025"
+  },
+  {
+    "id": 3,
+    "name": "React Developer",
+    "image": "/img/certificate/PROA.jpg",
+    "publisher": "Professional Academy · Kominfo",
+    "year": "Dec 2022"
+  }
+]

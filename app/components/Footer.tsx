@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkle } from 'lucide-react';
+import TextReveal from './TextReveal';
 
 export const Footer = () => {
   const contactInfo = [
@@ -73,25 +74,25 @@ export const Footer = () => {
             <div ref={marqueeRef} className="flex w-max whitespace-nowrap">
               {/* group 1 */}
               <div className="flex">
-                <span className="flex gap-9 pr-10 text-4xl text-white">
-                  <Sparkle className="h-8 w-8 text-white" /> Let's work together{' '}
-                  <Sparkle className="h-8 w-8 text-white" /> Let's work together{' '}
+                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
                 </span>
-                <span className="flex gap-9 pr-10 text-4xl text-white">
-                  <Sparkle className="h-8 w-8 text-white" />
-                  Let's work together <Sparkle className="h-8 w-8 text-white" /> Let's work
+                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
+                  <Sparkle className="h-9 w-9 pt-2 text-white" />
+                  Let's work together <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work
                   together{' '}
                 </span>
               </div>
 
               {/* duplicate group 2 */}
               <div className="flex">
-                <span className="flex gap-9 pr-10 text-4xl text-white">
-                  <Sparkle className="h-8 w-8 text-white" /> Let's work together{' '}
-                  <Sparkle className="h-8 w-8 text-white" /> Let's work together{' '}
+                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
                 </span>
-                <span className="flex gap-9 pr-10 text-4xl text-white">
-                  <Sparkle className="h-8 w-8 text-white" />
+                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
+                  <Sparkle className="h-9 w-9 pt-2 text-white" />
                   Let's work together <Sparkle className="h-8 w-8 text-white" /> Let's work
                   together{' '}
                 </span>
@@ -171,6 +172,11 @@ export const Footer = () => {
             );
           })}
         </div>
+
+        <TextReveal
+          text="Crafting digital experiences that feel smooth and memorable."
+          className="max-w-5xl text-5xl leading-tight font-semibold text-white md:text-7xl"
+        />
 
         <motion.div
           initial={{ opacity: 0 }}

@@ -61,7 +61,7 @@ export const HeroSection = () => {
 
       {/* Floating code elements */}
       {/* Floating Code Elements */}
-      {codeElements.map((code, index) => (
+      {/* {codeElements.map((code, index) => (
         <motion.div
           key={index}
           style={{
@@ -85,7 +85,7 @@ export const HeroSection = () => {
         >
           {code}
         </motion.div>
-      ))}
+      ))} */}
 
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">

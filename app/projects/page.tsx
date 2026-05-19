@@ -56,7 +56,7 @@ export default function ProjectsPage() {
             Back to Home
           </Link>
 
-          <h1 className="mb-4 bg-gradient-to-r from-yellow-500 to-blue-600 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+          <h1 className="mb-4 bg-gradient-to-r from-yellow-500 to-blue-600 bg-clip-text pb-4 text-5xl font-bold text-transparent md:text-7xl">
             All Projects
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-300">
@@ -82,8 +82,8 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedFilter(filter)}
                 className={`cursor-hover rounded-full px-6 py-2 transition-all duration-300 ${
                   selectedFilter === filter
-                    ? 'bg-gradient-to-r from-yellow-500 to-blue-600 text-white shadow-lg'
-                    : 'border border-slate-200 bg-white text-slate-600 hover:border-yellow-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-yellow-400'
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'border border-slate-200 bg-white text-slate-600 hover:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-blue-400'
                 }`}
               >
                 {filter}

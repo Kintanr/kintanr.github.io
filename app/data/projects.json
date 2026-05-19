@@ -6,6 +6,8 @@
     "tech": ["Nuxt.js", "Bulma"],
     "stack": ["Nuxt.js", "Bulma", "Vue.js"],
     "image": "/img/project/BTN.jpg",
+    "image_mobile": "/img/project/BTN.jpg",
+    "mobile": false,
     "gradient": "from-sky-400 to-sky-600",
     "color": "rgba(14, 165, 233, 0.45)",
     "priority": false
@@ -17,6 +19,8 @@
     "tech": ["Nuxt.js", "Vuetify"],
     "stack": ["Nuxt.js", "Bulma", "Vue.js"],
     "image": "/img/project/Airnav.jpg",
+    "image_mobile": "/img/project/Airnav.jpg",
+    "mobile": false,
     "gradient": "from-sky-500 to-blue-500",
     "color": "rgba(14, 165, 233, 0.45)",
     "priority": false
@@ -28,9 +32,11 @@
     "tech": ["Bulma", "Nuxt.js"],
     "stack": ["Nuxt.js", "Bulma", "Vue.js"],
     "image": "/img/project/Ingenium.png",
+    "image_mobile": "/img/project/Ingenium.png",
+    "mobile": false,
     "gradient": "from-yellow-400 to-orange-600",
     "color": "rgba(253, 224, 71, 0.45)",
-    "priority": false
+    "priority": true
   },
   {
     "id": 4,
@@ -39,6 +45,8 @@
     "tech": ["Nuxt.js", "Bulma", "Chart.js"],
     "stack": ["Nuxt.js", "Bulma", "Vue.js", "Chart.js"],
     "image": "/img/project/Taspen.jpg",
+    "image_mobile": "/img/project/Taspen.jpg",
+    "mobile": false,
     "gradient": "from-blue-500 to-blue-900",
     "color": "rgba(14, 165, 233, 0.45)",
     "priority": true
@@ -50,9 +58,11 @@
     "tech": ["Nuxt.js", "Bulma", "Chart.js"],
     "stack": ["Nuxt.js", "Bulma", "Vue.js", "Chart.js"],
     "image": "/img/project/Daily-taspen.jpg",
+    "image_mobile": "/img/project/Daily-taspen.jpg",
+    "mobile": false,
     "gradient": "from-cyan-400 to-cyan-600",
     "color": "rgba(6, 182, 212, 0.45)",
-    "priority": false
+    "priority": true
   },
   {
     "id": 6,
@@ -61,6 +71,8 @@
     "tech": ["CodeIgniter", "Redis"],
     "stack": ["CodeIgniter", "Redis", "PHP"],
     "image": "/img/project/NED.jpg",
+    "image_mobile": "/img/project/NED.jpg",
+    "mobile": false,
     "gradient": "from-cyan-700 to-sky-900",
     "color": "rgba(236, 72, 153, 0.45)",
     "priority": false
@@ -72,6 +84,8 @@
     "tech": ["Nuxt.js", "Bootstrap"],
     "stack": ["Nuxt.js", "Bootstrap", "Vue.js"],
     "image": "/img/project/Sidex.jpg",
+    "image_mobile": "/img/project/Sidex.jpg",
+    "mobile": false,
     "gradient": "from-orange-400 to-rose-600",
     "color": "rgba(253, 174, 71, 0.45)",
     "priority": true
@@ -83,6 +97,8 @@
     "tech": ["React Native", "NativeWind", "Firebase"],
     "stack": ["React Native", "NativeWind", "Firebase", "Tailwind"],
     "image": "/img/project/Lakuemas.png",
+    "image_mobile": "/img/project/lakuemas-mobile.png",
+    "mobile": true,
     "gradient": "from-yellow-400 to-black",
     "color": "rgba(253, 224, 71, 0.45)",
     "priority": true
@@ -94,9 +110,11 @@
     "tech": ["Next.js", "Tailwind", "Firebase"],
     "stack": ["Next.js", "React.js", "Tailwind", "Firebase"],
     "image": "/img/project/Lakushop.png",
+    "image_mobile": "/img/project/Lakushop.png",
+    "mobile": false,
     "gradient": "from-yellow-500 to-orange-700",
     "color": "rgba(245, 200, 76, 0.45)",
-    "priority": false
+    "priority": true
   },
   {
     "id": 10,
@@ -105,6 +123,8 @@
     "tech": ["Next.js", "Tailwind"],
     "stack": ["Next.js", "React.js", "Tailwind"],
     "image": "/img/project/Sukha.png",
+    "image_mobile": "/img/project/Sukha.png",
+    "mobile": false,
     "gradient": "from-sky-300 to-sky-600",
     "color": "rgba(14, 165, 233, 0.45)",
     "priority": false
