@@ -100,7 +100,7 @@ export const CertificatesSection = () => {
               className="group cursor-hover relative"
             >
               <div className="hover-3d mb-10">
-                <div className="card w-96 rounded-3xl bg-slate-900 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[size:28px_28px] p-0 text-white dark:bg-slate-800">
+                <div className="card max-w-96 rounded-3xl bg-slate-900 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[size:28px_28px] p-0 text-white dark:bg-slate-800">
                   <div className="card-body p-4">
                     <figure className="max-h-60 max-w-100 rounded-2xl">
                       <img src={cert.image} alt={cert.name} onClick={() => openModal(cert)} />

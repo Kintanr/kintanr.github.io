@@ -17,6 +17,21 @@ export const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const isEnglish = pathname.startsWith('/en');
+
+  const toggleLanguage = () => {
+    let newPath: string;
+    if (isEnglish) {
+      // /en/about -> /id/about
+      newPath = pathname.replace(/^\/en/, '/id');
+    } else {
+      // /id/about -> /en/about
+      newPath = pathname.replace(/^\/id/, '/en');
+    }
+
+    router.push(newPath);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -61,7 +76,7 @@ export const Navbar = () => {
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Link Next.js menggunakan atribut 'href', bukan 'to' */}
-          <Link href="/" className="bg-clip-text text-2xl font-bold text-yellow-500">
+          <Link href={'/'} className="bg-clip-text text-2xl font-bold text-yellow-500">
             Kintan Umari
           </Link>
 
@@ -79,7 +94,7 @@ export const Navbar = () => {
               Skills
             </button>
             <Link
-              href="/projects"
+              href={'/projects'}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
               Projects
@@ -134,6 +149,22 @@ export const Navbar = () => {
                 <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
               </svg>
             </label>
+
+            <div
+              onClick={toggleLanguage}
+              className="relative h-10 w-20 cursor-pointer rounded-full bg-neutral-200 p-1"
+            >
+              <motion.div
+                animate={{ x: isEnglish ? 40 : 0 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+                className="h-8 w-8 rounded-full bg-white shadow"
+              />
+
+              <div className="absolute inset-0 flex items-center justify-between px-3 text-sm">
+                <span>ID</span>
+                <span>EN</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

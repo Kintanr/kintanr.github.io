@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+
+  "homepage": {
+    "title": "Hello World",
+    "description": "Welcome to my website"
+  },
+
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

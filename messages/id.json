@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "contact": "Kontak"
+  },
+
+  "homepage": {
+    "title": "Halo Dunia",
+    "description": "Selamat datang di website saya"
+  },
+
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal"
+  }
+}

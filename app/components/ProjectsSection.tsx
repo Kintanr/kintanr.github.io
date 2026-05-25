@@ -65,9 +65,8 @@ export const ProjectsSection = () => {
           <motion.div
             key={index}
             style={{
-              left: `${15 + index * 12}%`,
+              left: `${5 + index * 12}%`,
               top: `${20 + (index % 3) * 20}%`,
-              // Tambahkan sedikit pengaruh kursor pada teks juga
               x: smoothX,
               y: smoothY,
             }}
