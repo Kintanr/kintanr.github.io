@@ -3,8 +3,10 @@ import { Award } from 'lucide-react';
 import certificates from '../data/certificates.json';
 import { ModalImage } from './ModalImage';
 import { useState, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 export const CertificatesSection = () => {
+  const t = useTranslations('certificates');
   // const certificates = [
   //   {
   //     id: 1,
@@ -83,10 +85,8 @@ export const CertificatesSection = () => {
               Professional Certifications
             </span>
           </div> */}
-          <h2 className="mb-4 text-5xl font-bold text-blue-500 md:text-6xl">Certificates</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            Continuous learning and professional development
-          </p>
+          <h2 className="mb-4 text-5xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

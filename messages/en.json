@@ -1,17 +1,42 @@
 {
   "navbar": {
     "home": "Home",
-    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certificates": "Certificates",
     "contact": "Contact"
   },
 
   "homepage": {
-    "title": "Hello World",
-    "description": "Welcome to my website"
+    "description": "Passionate about building responsive, user-friendly, and visually appealing web and mobile applications. I transform ideas into engaging digital experiences using modern frontend technologies.",
+    "tagline": "<quote>Designing and developing modern <highlight>web & mobile</highlight> experiences.</quote>"
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Modern tools I use to build amazing experiences"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "title2": "All Projects",
+    "subtitle": "Some of my recent work",
+    "description": "A comprehensive showcase of my work and experiments",
+    "view": "View all projects"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Some of the certificates I've earned"
+  },
+  "footer": {
+    "title": "Let's work together",
+    "subtitle": "Feel free to reach out for collaborations or just a friendly hello",
+    "tagline": "Crafted with passion and code."
   },
 
   "common": {
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "filter_by": "Filter by",
+    "back_home": "Back to Home",
+    "not_found_filter": "No {item} found with this filter"
   }
 }

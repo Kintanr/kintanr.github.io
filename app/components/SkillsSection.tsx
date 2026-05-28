@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { Code2, Palette, Zap, GitBranch, Layout, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import skills from '../data/skills.json';
+import { useTranslations } from 'next-intl';
 
 export const SkillsSection = () => {
   const containerRef = useRef(null);
@@ -14,6 +15,8 @@ export const SkillsSection = () => {
     target: containerRef,
     offset: ['start start', 'end end'],
   });
+
+  const t = useTranslations('skills');
 
   // const skills = [
   //   { name: 'HTML5', icon: Code2, color: 'from-orange-400 to-red-500' },
@@ -50,11 +53,9 @@ export const SkillsSection = () => {
               className="text-center"
             >
               <h2 className="mb-2 pb-4 text-5xl font-bold text-blue-500 md:text-6xl">
-                Skills & Technologies
+                {t('title')}
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                Modern tools I use to build amazing experiences
-              </p>
+              <p className="text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
             </motion.div>
           </div>
 

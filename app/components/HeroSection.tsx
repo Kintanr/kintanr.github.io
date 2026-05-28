@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'motion/react';
 import { Code2, Sparkles, Zap } from 'lucide-react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export const HeroSection = () => {
   // 1. Gunakan MotionValue untuk performa yang lebih baik (menghindari re-render berlebih)
@@ -31,6 +32,8 @@ export const HeroSection = () => {
   }, [mouseX, mouseY]);
 
   const codeElements = ['{ }', '<div>', 'const', '=>', '</>', 'useState', 'return'];
+
+  const t = useTranslations('homepage');
 
   return (
     <section
@@ -132,9 +135,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300"
         >
-          Passionate about building responsive, user-friendly, and visually appealing web and mobile
-          applications. I transform ideas into engaging digital experiences using modern frontend
-          technologies.
+          {t('description')}
         </motion.p>
 
         <motion.div
@@ -169,9 +170,16 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="my-12 bg-clip-text text-2xl font-semibold text-blue-500 md:text-3xl"
         >
-          <span className="text-sky-200">"</span>Designing and developing modern{' '}
-          <span className="text-yellow-500">web & mobile</span> experiences.
-          <span className="text-sky-200">"</span>
+          {t.rich('tagline', {
+            quote: (chunks) => (
+              <>
+                <span className="text-sky-200">"</span>
+                {chunks}
+                <span className="text-sky-200">"</span>
+              </>
+            ),
+            highlight: (chunks) => <span className="text-yellow-500">{chunks}</span>,
+          })}
         </motion.div>
       </div>
 

@@ -6,6 +6,7 @@ import projectsData from '../data/projects.json';
 import Image from 'next/image';
 import { ModalImage } from './ModalImage';
 import { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export const ProjectsSection = () => {
   type Project = {
@@ -58,6 +59,8 @@ export const ProjectsSection = () => {
     'if ()',
   ];
 
+  const t = useTranslations('projects');
+
   return (
     <section className="relative z-1 min-h-screen bg-slate-50 dark:bg-slate-950">
       <div className="relative sticky top-0 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center overflow-hidden px-6">
@@ -92,15 +95,13 @@ export const ProjectsSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-2 py-2 text-5xl font-bold text-blue-500 md:text-6xl">
-            Featured Projects
-          </h2>
-          <p className="mb-4 text-lg text-slate-600 dark:text-slate-300">Some of my recent work</p>
+          <h2 className="mb-2 py-2 text-5xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
+          <p className="mb-4 text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-yellow-500 transition-colors hover:text-blue-500"
           >
-            View all projects <ExternalLink className="h-4 w-4" />
+            {t('view')} <ExternalLink className="h-4 w-4" />
           </Link>
         </motion.div>
 

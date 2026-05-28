@@ -6,8 +6,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkle } from 'lucide-react';
 import TextReveal from './TextReveal';
+import { useTranslations } from 'next-intl';
 
 export const Footer = () => {
+  const t = useTranslations('footer');
   const contactInfo = [
     {
       icon: Mail,
@@ -75,26 +77,24 @@ export const Footer = () => {
               {/* group 1 */}
               <div className="flex">
                 <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
                 </span>
                 <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
                   <Sparkle className="h-9 w-9 pt-2 text-white" />
-                  Let's work together <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work
-                  together{' '}
+                  {t('title')} <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
                 </span>
               </div>
 
               {/* duplicate group 2 */}
               <div className="flex">
                 <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> Let's work together{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
+                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
                 </span>
                 <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
                   <Sparkle className="h-9 w-9 pt-2 text-white" />
-                  Let's work together <Sparkle className="h-8 w-8 text-white" /> Let's work
-                  together{' '}
+                  {t('title')} <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
                 </span>
               </div>
             </div>
@@ -118,7 +118,7 @@ export const Footer = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg text-slate-600 dark:text-slate-300"
           >
-            Feel free to reach out for collaborations or just a friendly hello
+            {t('subtitle')}
           </motion.p>
         </div>
 
@@ -194,7 +194,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              © {new Date().getFullYear()} Kintan Umari. Crafted with passion and code.
+              © {new Date().getFullYear()} Kintan Umari. {t('tagline')}
             </p>
           </div>
         </motion.div>

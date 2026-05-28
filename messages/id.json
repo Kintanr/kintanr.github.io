@@ -1,17 +1,43 @@
 {
   "navbar": {
     "home": "Beranda",
-    "about": "Tentang",
+    "skills": "keterampilan",
+    "projects": "Proyek",
+    "certificates": "Sertifikat",
     "contact": "Kontak"
   },
 
   "homepage": {
-    "title": "Halo Dunia",
-    "description": "Selamat datang di website saya"
+    "description": "Bersemangat dalam membangun aplikasi web dan mobile yang responsif, mudah digunakan, dan menarik secara visual. Saya mengubah ide menjadi pengalaman digital yang menarik dengan menggunakan teknologi frontend modern.",
+    "tagline": "<quote>Merancang dan mengembangkan pengalaman <highlight>web & mobile</highlight> modern.</quote>"
+  },
+
+  "skills": {
+    "title": "Keahlian & Teknologi",
+    "subtitle": "Teknologi modern yang saya gunakan untuk membangun pengalaman digital yang optimal"
+  },
+  "projects": {
+    "title": "Proyek Pilihan",
+    "title2": "Semua Proyek",
+    "subtitle": "Beberapa karya terbaru saya",
+    "description": "Kumpulan lengkap karya dan eksperimen saya",
+    "view": "Lihat semua proyek"
+  },
+  "certificates": {
+    "title": "Sertifikat",
+    "subtitle": "Beberapa sertifikat yang saya peroleh"
+  },
+  "footer": {
+    "title": "Mari berkolaborasi",
+    "subtitle": "Terbuka untuk kolaborasi maupun sekadar menyapa",
+    "tagline": "Dibangun dengan semangat dan kode."
   },
 
   "common": {
     "save": "Simpan",
-    "cancel": "Batal"
+    "cancel": "Batal",
+    "filter_by": "Filter berdasarkan",
+    "back_home": "Kembali ke Beranda",
+    "not_found_filter": "Tidak ada {item} yang ditemukan dengan filter ini"
   }
 }

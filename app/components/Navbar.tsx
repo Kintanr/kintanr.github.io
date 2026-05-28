@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
+// import { useRouter, usePathname } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useTranslations, useLocale } from 'next-intl';
+import { usePathname, useRouter } from '@/i18n/navigation';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,19 +19,16 @@ export const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const isEnglish = pathname.startsWith('/en');
+  const t = useTranslations('navbar');
+
+  const locale = useLocale();
+
+  const isEnglish = locale === 'en';
 
   const toggleLanguage = () => {
-    let newPath: string;
-    if (isEnglish) {
-      // /en/about -> /id/about
-      newPath = pathname.replace(/^\/en/, '/id');
-    } else {
-      // /id/about -> /en/about
-      newPath = pathname.replace(/^\/id/, '/en');
-    }
-
-    router.push(newPath);
+    router.replace(pathname, {
+      locale: isEnglish ? 'id' : 'en',
+    });
   };
 
   useEffect(() => {
@@ -85,31 +84,31 @@ export const Navbar = () => {
               onClick={() => scrollToSection('home')}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
-              Home
+              {t('home')}
             </button>
             <button
               onClick={() => scrollToSection('skills')}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
-              Skills
+              {t('skills')}
             </button>
             <Link
               href={'/projects'}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
-              Projects
+              {t('projects')}
             </Link>
             <button
               onClick={() => scrollToSection('certificates')}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
-              Certificates
+              {t('certificates')}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
               className="text-slate-600 transition-colors hover:text-yellow-500 dark:text-slate-300 dark:hover:text-yellow-500"
             >
-              Contact
+              {t('contact')}
             </button>
 
             {/* <button
@@ -152,17 +151,17 @@ export const Navbar = () => {
 
             <div
               onClick={toggleLanguage}
-              className="relative h-10 w-20 cursor-pointer rounded-full bg-neutral-200 p-1"
+              className="relative h-10 w-20 cursor-pointer rounded-full bg-neutral-200 p-1 transition-colors duration-300 hover:bg-neutral-300 dark:bg-slate-800 dark:hover:bg-slate-700"
             >
               <motion.div
                 animate={{ x: isEnglish ? 40 : 0 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className="h-8 w-8 rounded-full bg-white shadow"
+                className="h-8 w-8 rounded-full bg-white shadow-md dark:bg-slate-100 dark:shadow-slate-950/40"
               />
 
-              <div className="absolute inset-0 flex items-center justify-between px-3 text-sm">
-                <span>ID</span>
-                <span>EN</span>
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-3 text-sm text-slate-700 dark:text-slate-400">
+                <span className={!isEnglish ? 'font-semibold' : ''}>ID</span>
+                <span className={isEnglish ? 'font-semibold' : ''}>EN</span>
               </div>
             </div>
           </div>

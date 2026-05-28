@@ -3,12 +3,16 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Filter } from 'lucide-react';
 import Link from 'next/link';
-import Card from '../components/Card';
-import projectsData from '../data/projects.json';
+import Card from '../../components/Card';
+import projectsData from '../../data/projects.json';
 import Image from 'next/image';
-import { ModalImage } from '../components/ModalImage';
+import { ModalImage } from '../../components/ModalImage';
+import { useTranslations } from 'next-intl';
 
 export default function ProjectsPage() {
+  const t = useTranslations('projects');
+  const common = useTranslations('common');
+  const navbar = useTranslations('navbar');
   const [selectedFilter, setSelectedFilter] = useState('All');
 
   type Project = {
@@ -53,15 +57,13 @@ export default function ProjectsPage() {
             className="mb-6 inline-flex items-center gap-2 text-yellow-500 transition-colors hover:text-blue-600"
           >
             <ArrowLeft className="h-5 w-5" />
-            Back to Home
+            {common('back_home')}
           </Link>
 
           <h1 className="mb-4 bg-gradient-to-r from-yellow-500 to-blue-600 bg-clip-text pb-4 text-5xl font-bold text-transparent md:text-7xl">
-            All Projects
+            {t('title2')}
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            A comprehensive showcase of my work and experiments
-          </p>
+          <p className="text-lg text-slate-600 dark:text-slate-300">{t('description')}</p>
         </motion.div>
 
         {/* Filters */}
@@ -74,7 +76,7 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
               <Filter className="h-5 w-5" />
-              <span className="font-semibold">Filter by:</span>
+              <span className="font-semibold">{common('filter_by')}:</span>
             </div>
             {filters.map((filter) => (
               <button
@@ -155,7 +157,7 @@ export default function ProjectsPage() {
           >
             <div className="mb-4 text-6xl">🔍</div>
             <p className="text-xl text-slate-600 dark:text-slate-300">
-              No projects found with this filter
+              {common('not_found_filter', { item: navbar('project') })}
             </p>
           </motion.div>
         )}
