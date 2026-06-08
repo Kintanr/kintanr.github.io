@@ -27,6 +27,12 @@
     "title": "Sertifikat",
     "subtitle": "Beberapa sertifikat yang saya peroleh"
   },
+  "contact": {
+    "title": "Hubungi Saya",
+    "description": "Punya proyek atau ingin berkolaborasi? Jangan ragu untuk menghubungi saya!",
+    "get_in_touch": "Informasi Kontak",
+    "contact_info": "Saya selalu senang mendengar dari Anda. Baik Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi saya."
+  },
   "footer": {
     "title": "Mari berkolaborasi",
     "subtitle": "Terbuka untuk kolaborasi maupun sekadar menyapa",

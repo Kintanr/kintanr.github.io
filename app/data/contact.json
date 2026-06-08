@@ -1,0 +1,30 @@
+[
+  {
+    "icon": "Globe",
+    "label": "Portfolio",
+    "value": "kintanr.github.io",
+    "href": "#",
+    "connect": false
+  },
+  {
+    "icon": "MapPin",
+    "label": "Location",
+    "value": "Jakarta, Indonesia",
+    "href": null,
+    "connect": false
+  },
+  {
+    "icon": "linkedinPath",
+    "label": "LinkedIn",
+    "value": "linkedin.com/in/kintan-umari-7a58911bb",
+    "href": "https://www.linkedin.com/in/kintan-umari-7a58911bb/",
+    "connect": true
+  },
+  {
+    "icon": "SiGithub",
+    "label": "GitHub",
+    "value": "github.com/kintanr",
+    "href": "https://github.com/Kintanr",
+    "connect": true
+  }
+]

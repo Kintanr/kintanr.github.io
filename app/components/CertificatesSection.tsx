@@ -69,7 +69,7 @@ export const CertificatesSection = () => {
   return (
     <section
       id="certificates"
-      className="relative bg-gradient-to-b from-white to-slate-50 py-32 dark:from-slate-900 dark:to-slate-950"
+      className="relative min-h-screen bg-gradient-to-b from-white to-slate-50 py-32 dark:from-slate-900 dark:to-slate-950"
     >
       <div className="mx-auto max-w-7xl px-6">
         <motion.div

@@ -47,15 +47,19 @@ export default async function RootLayout({ children, params }: Props) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProviders>
-            <CustomCursor />
-            <FloatingShapes />
-            {/* <Header /> */}
+            <div className="relative">
+              <div className="hidden md:block">
+                <CustomCursor />
+                <FloatingShapes />
+              </div>
+              {/* <Header /> */}
 
-            <Navbar />
+              <Navbar />
 
-            {children}
-
-            <Footer />
+              <main className="relative z-10">{children}</main>
+              <div id="contact" className="h-[100vh]" />
+              <Footer />
+            </div>
           </ThemeProviders>
         </NextIntlClientProvider>
       </body>

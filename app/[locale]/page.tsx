@@ -11,6 +11,7 @@ export default function SplitScrambleHero() {
   return (
     <>
       {/* <SplashScreen /> */}
+
       <HeroSection />
       <SkillsSection />
       <ProjectsSection />

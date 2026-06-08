@@ -1,32 +1,62 @@
 'use client';
-import { motion } from 'motion/react';
-import { Mail, MapPin, Globe } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'motion/react';
+import {
+  Mail,
+  MapPin,
+  Globe,
+  Sparkle,
+  Contact,
+  House,
+  BrainCog,
+  TabletSmartphone,
+  FileBadge,
+  MoveRight,
+} from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sparkle } from 'lucide-react';
 import TextReveal from './TextReveal';
 import { useTranslations } from 'next-intl';
+import infoContact from '../data/contact.json';
+import { scrollToSection } from '@/utils/navigate';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import Link from 'next/link';
 
 export const Footer = () => {
   const t = useTranslations('footer');
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'alex.johnson@example.com',
-      href: 'mailto:alex.johnson@example.com',
-    },
-    // { icon: Github, label: 'GitHub', value: 'github.com/alexjohnson', href: 'https://github.com' },
-    // {
-    //   icon: Linkedin,
-    //   label: 'LinkedIn',
-    //   value: 'linkedin.com/in/alexjohnson',
-    //   href: 'https://linkedin.com',
-    // },
-    { icon: Globe, label: 'Portfolio', value: 'alexjohnson.dev', href: '#' },
-    { icon: MapPin, label: 'Location', value: 'San Francisco, CA', href: null },
+  const nav = useTranslations('navbar');
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const contactInfo = infoContact.filter((item) => item.connect === false);
+
+  const connectInfo = infoContact.filter((item) => item.connect === true);
+
+  const menuList = [
+    { label: nav('home'), href: 'home', icon: House },
+    { label: nav('skills'), href: 'skills', icon: BrainCog },
+    { label: nav('projects'), href: '/projects', icon: TabletSmartphone },
+    { label: nav('certificates'), href: 'certificates', icon: FileBadge },
+    { label: nav('contact'), href: 'contact', icon: Contact },
   ];
+
+  const linkedinPath =
+    'M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z';
+
+  const ICONS: Record<string, React.ComponentType<any>> = {
+    Mail,
+    MapPin,
+    Globe,
+    Sparkle,
+    Contact,
+    SiGithub,
+    linkedinPath: (props) => (
+      <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d={linkedinPath} />
+      </svg>
+    ),
+  };
 
   const marqueeRef = useRef<HTMLDivElement>(null);
 
@@ -35,11 +65,17 @@ export const Footer = () => {
 
     let direction = -1;
     let xPercent = 0;
+    let speed = window.innerWidth >= 768 ? 0.03 : 0.05;
+
+    const handleResize = () => {
+      speed = window.innerWidth >= 768 ? 0.03 : 0.05;
+    };
+
+    window.addEventListener('resize', handleResize);
 
     const animate = () => {
-      xPercent += 0.03 * direction;
+      xPercent += speed * direction;
 
-      // wrap seamless karena hanya ada 2 group identik
       if (xPercent <= -50) xPercent = 0;
       if (xPercent > 0) xPercent = -50;
 
@@ -60,145 +96,211 @@ export const Footer = () => {
     });
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       gsap.ticker.remove(animate);
       trigger.kill();
     };
   }, []);
 
-  return (
-    <footer
-      id="contact"
-      className="relative bg-gradient-to-b from-slate-50 to-white py-36 dark:from-slate-950 dark:to-slate-900"
-    >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="w-full overflow-hidden">
-          <div className="w-full overflow-hidden">
-            <div ref={marqueeRef} className="flex w-max whitespace-nowrap">
-              {/* group 1 */}
-              <div className="flex">
-                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                </span>
-                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" />
-                  {t('title')} <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                </span>
-              </div>
+  const ref = useRef<HTMLElement>(null);
 
-              {/* duplicate group 2 */}
-              <div className="flex">
-                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                  <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                </span>
-                <span className="flex gap-9 pr-10 pb-2 text-5xl text-white">
-                  <Sparkle className="h-9 w-9 pt-2 text-white" />
-                  {t('title')} <Sparkle className="h-9 w-9 pt-2 text-white" /> {t('title')}{' '}
-                </span>
+  const { scrollYProgress } = useScroll();
+
+  // footer muncul dari bawah
+  const rawY = useTransform(scrollYProgress, [0.9, 1], [300, 0]);
+
+  const y = useSpring(rawY, {
+    stiffness: 120,
+    damping: 24,
+  });
+
+  // const opacity = useTransform(scrollYProgress, [0.88, 0.92, 1], [0, 1, 1]);
+
+  const [revealText, setRevealText] = useState(false);
+  const [footerProgress, setFooterProgress] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const progress = Math.max(0, Math.min(1, (latest - 0.9) / 0.1));
+    setRevealText(progress > 0.1);
+    setFooterProgress(progress);
+  });
+
+  return (
+    <motion.footer
+      ref={ref}
+      className="fixed inset-x-0 bottom-0 z-0 max-h-[100vh] overflow-x-hidden overflow-y-auto bg-gradient-to-b from-slate-100 to-white pt-28 pb-4 md:h-screen md:overflow-hidden dark:from-slate-900 dark:to-slate-800"
+      style={{ WebkitOverflowScrolling: 'touch' }}
+    >
+      <div className="relative">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="w-full overflow-hidden">
+            <div className="h-12 w-full overflow-hidden md:h-24">
+              <div ref={marqueeRef} className="flex w-max py-2 whitespace-nowrap md:py-4">
+                {/* group 1 */}
+                <div className="flex">
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
+                  </span>
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />
+                    {t('title')} <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />{' '}
+                    {t('title')}{' '}
+                  </span>
+                </div>
+
+                {/* duplicate group 2 */}
+                <div className="flex">
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
+                  </span>
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
+                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />
+                    {t('title')} <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />{' '}
+                    {t('title')}{' '}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="mb-12 text-center">
-          {/* <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <div className="grid grid-cols-1 items-start gap-10 pt-8 pb-10 md:grid-cols-4">
+            <div className="pr-10">
+              {/* <h3 className="mb-5 text-3xl font-semibold text-slate-800 dark:text-white">
+                Kintan Umari
+              </h3> */}
+              <p className="text-sm text-slate-600 dark:text-slate-300">
+                Crafting digital experiences and building solutions with passion and code.
+              </p>
+
+              <div className="mt-7 flex gap-6">
+                {connectInfo.map((item, index) => {
+                  const Icon = (ICONS[item.icon] || Mail) as React.ComponentType<any>;
+                  return (
+                    <a
+                      key={index}
+                      href={item.href || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-12 w-12 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-slate-200 p-2 transition-colors hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
+                    >
+                      <Icon className="h-5 w-5 text-slate-200" />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="col-span-2 flex justify-between md:justify-around">
+              <div>
+                <p className="mb-7 text-xl font-bold text-white">Quick Links</p>
+
+                <div>
+                  {menuList.map((item, index) => {
+                    const Icon = item.icon;
+                    return item.href.startsWith('/') ? (
+                      <Link
+                        href={item.href}
+                        key={index}
+                        className="mt-5 block flex items-center text-sm text-slate-600 transition-colors hover:text-slate-800 dark:text-slate-300 dark:hover:text-white"
+                      >
+                        <Icon className="mr-3 inline-block h-5 w-5" />
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <button
+                        key={index}
+                        onClick={() => scrollToSection(item.href, router, pathname)}
+                        className="mt-5 block flex cursor-pointer items-center text-sm text-slate-600 transition-colors hover:text-slate-800 dark:text-slate-300 dark:hover:text-white"
+                      >
+                        <Icon className="mr-3 inline-block h-5 w-5" />
+                        {item.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div>
+                <p className="mb-7 text-xl font-bold text-white">Contact</p>
+
+                <div className="flex flex-col gap-y-6">
+                  {contactInfo.map((item, index) => {
+                    const Icon = (ICONS[item.icon] || Mail) as React.ComponentType<any>;
+                    return (
+                      <div className="flex items-center gap-x-4" key={index}>
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white p-1 transition-all duration-300 hover:border-transparent hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
+                          <Icon className="h-6 w-6 text-blue-500 transition-transform duration-300 group-hover:scale-110" />
+                        </div>
+
+                        <div>
+                          <p className="mb-1 font-semibold text-slate-800 dark:text-white">
+                            {item.label}
+                          </p>
+                          <p className="text-sm break-all text-slate-600 dark:text-slate-300">
+                            {item.value}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              {/* <h3 className="mb-5 text-3xl font-semibold text-slate-800 dark:text-white">
+                Kintan Umari
+              </h3> */}
+              <div className="flex gap-4">
+                <Sparkle className="text-yellow-500" />
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Feel free to reach out for collaborations or just a friendly hello.
+                </p>
+              </div>
+
+              <div className="mt-6 inline-flex cursor-pointer rounded-xl bg-gradient-to-r from-blue-500 to-yellow-500 bg-[length:200%_200%] p-[1px] transition-all duration-500 hover:bg-right">
+                <div className="rounded-xl bg-slate-900 px-6 py-3 text-white">
+                  <a
+                    className="flex items-center gap-2"
+                    href="mailto:kintanumari178@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MoveRight size={16} />
+                    <span>Say hello</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="justify-items-center">
+            <TextReveal text="KINTANUMARI" active={revealText} progress={footerProgress} />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-4 bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            className="border-t border-slate-200 pt-0 dark:border-slate-800"
           >
-            Let's Connect
-          </motion.h2> */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg text-slate-600 dark:text-slate-300"
-          >
-            {t('subtitle')}
-          </motion.p>
-        </div>
-
-        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
-          {contactInfo.map((item, index) => {
-            const Icon = item.icon;
-            const content = (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative"
-              >
-                <div className="rounded-xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:border-transparent hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                  <div className="relative">
-                    <Icon className="mb-3 h-8 w-8 text-cyan-500 transition-transform duration-300 group-hover:scale-110" />
-                    <h3 className="mb-1 font-semibold text-slate-800 dark:text-white">
-                      {item.label}
-                    </h3>
-                    <p className="text-sm break-all text-slate-600 dark:text-slate-300">
-                      {item.value}
-                    </p>
-                  </div>
-
-                  {item.href && (
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      className="absolute right-0 bottom-0 left-0 h-1 origin-left rounded-b-xl bg-gradient-to-r from-cyan-500 to-purple-500"
-                    />
-                  )}
+            <div className="space-y-4 text-center">
+              {/* <div className="flex items-center justify-center gap-2">
+                <div className="text-3xl">👨‍💻</div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-white">Kintan Umari</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Frontend Developer</p>
                 </div>
-              </motion.div>
-            );
-
-            return item.href ? (
-              <a
-                key={index}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cursor-hover"
-              >
-                {content}
-              </a>
-            ) : (
-              <div key={index}>{content}</div>
-            );
-          })}
-        </div>
-
-        <TextReveal
-          text="Crafting digital experiences that feel smooth and memorable."
-          className="max-w-5xl text-5xl leading-tight font-semibold text-white md:text-7xl"
-        />
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="border-t border-slate-200 pt-8 dark:border-slate-800"
-        >
-          <div className="space-y-4 text-center">
-            <div className="flex items-center justify-center gap-2">
-              <div className="text-3xl">👨‍💻</div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-800 dark:text-white">Kintan Umari</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Frontend Developer</p>
-              </div>
+              </div> */}
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                © {new Date().getFullYear()} Kintan Umari. {t('tagline')}
+              </p>
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              © {new Date().getFullYear()} Kintan Umari. {t('tagline')}
-            </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };

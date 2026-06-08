@@ -26,6 +26,12 @@
     "title": "Certificates",
     "subtitle": "Some of the certificates I've earned"
   },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Have a project in mind or want to collaborate? Feel free to reach out!",
+    "get_in_touch": "Contact Information",
+    "contact_info": "I'm always happy to hear from you. Whether you have a question or just want to say hello, feel free to get in touch."
+  },
   "footer": {
     "title": "Let's work together",
     "subtitle": "Feel free to reach out for collaborations or just a friendly hello",
