@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 
 type CardProps = {
   color?: string;
@@ -12,6 +13,8 @@ export default function Home({ color = 'rgba(59,130,246,0.45)', project }: CardP
   const current = useRef({ x: 50, y: 50 });
   const target = useRef({ x: 50, y: 50 });
   const rafId = useRef<number | null>(null);
+
+  const locale = useLocale();
 
   const animate = () => {
     current.current.x += (target.current.x - current.current.x) * 0.08;
@@ -67,7 +70,7 @@ export default function Home({ color = 'rgba(59,130,246,0.45)', project }: CardP
           {project.title}
         </h3>
         <div className="flex h-full flex-col justify-between">
-          <p className="mb-4 text-slate-600 dark:text-slate-300">{project.description}</p>
+          <p className="mb-4 text-slate-600 dark:text-slate-300">{project.description[locale]}</p>
 
           {/* Tech stack */}
           <div className="mb-6 flex flex-wrap gap-2">

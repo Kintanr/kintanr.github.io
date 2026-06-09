@@ -110,7 +110,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-6 bg-gradient-to-r from-yellow-500 from-30% to-blue-600 to-70% bg-clip-text text-6xl font-bold text-transparent md:text-8xl"
+          className="mb-6 bg-gradient-to-r from-yellow-500 from-30% to-blue-600 to-70% bg-clip-text text-5xl font-bold text-transparent md:text-8xl"
           style={{
             textShadow: '0 0 40px rgba(34, 170, 238, 0.3)',
           }}
@@ -122,11 +122,11 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mb-8 flex items-center justify-center gap-3 text-2xl text-slate-700 md:text-4xl dark:text-slate-200"
+          className="mb-8 flex items-center justify-center gap-3 text-xl text-slate-700 md:text-4xl dark:text-slate-200"
         >
-          <Code2 className="h-8 w-8 text-blue-500" />
+          <Code2 className="h-6 w-6 text-blue-500 md:h-8 md:w-8" />
           <span>Frontend Developer</span>
-          <Zap className="h-8 w-8 fill-yellow-500 text-yellow-500" />
+          <Zap className="h-6 w-6 fill-yellow-500 text-yellow-500 md:h-8 md:w-8" />
         </motion.div>
 
         <motion.p
@@ -168,14 +168,14 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="my-12 bg-clip-text text-2xl font-semibold text-blue-500 md:text-3xl"
+          className="my-12 bg-clip-text text-xl font-semibold text-blue-500 md:text-3xl"
         >
           {t.rich('tagline', {
             quote: (chunks) => (
               <>
-                <span className="text-sky-200">"</span>
+                <span className="text-sky-400 dark:text-sky-200">"</span>
                 {chunks}
-                <span className="text-sky-200">"</span>
+                <span className="text-sky-400 dark:text-sky-200">"</span>
               </>
             ),
             highlight: (chunks) => <span className="text-yellow-500">{chunks}</span>,

@@ -36,6 +36,8 @@
   "footer": {
     "title": "Mari berkolaborasi",
     "subtitle": "Terbuka untuk kolaborasi maupun sekadar menyapa",
+    "description": "Menciptakan pengalaman digital dan membangun solusi dengan penuh semangat melalui teknologi dan kode.",
+    "reach_out": "Jangan ragu untuk menghubungi saya untuk kolaborasi atau sekadar menyapa.",
     "tagline": "Dibangun dengan semangat dan kode."
   },
 
@@ -44,6 +46,9 @@
     "cancel": "Batal",
     "filter_by": "Filter berdasarkan",
     "back_home": "Kembali ke Beranda",
-    "not_found_filter": "Tidak ada {item} yang ditemukan dengan filter ini"
+    "not_found_filter": "Tidak ada {item} yang ditemukan dengan filter ini",
+    "quickLinks": "Tautan Cepat",
+    "contact": "Kontak",
+    "say_hello": "Mari Berkenalan"
   }
 }

@@ -95,11 +95,11 @@ export const ProjectsSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-2 py-2 text-5xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
-          <p className="mb-4 text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
+          <h2 className="mb-2 py-2 text-3xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
+          <p className="mb-4 text-slate-600 md:text-lg dark:text-slate-300">{t('subtitle')}</p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-yellow-500 transition-colors hover:text-blue-500"
+            className="inline-flex items-center gap-2 text-sm text-yellow-500 transition-colors hover:text-blue-500 md:text-base"
           >
             {t('view')} <ExternalLink className="h-4 w-4" />
           </Link>
@@ -151,49 +151,55 @@ export const ProjectsSection = () => {
         </div> */}
       </div>
 
-      <div className="z-2 min-h-screen">
-        {projects.map((project, index) => (
-          <div
-            style={{
-              [(index + 1) % 2 === 0 ? 'marginRight' : 'marginLeft']:
-                `${index + (0.5 + index) * 5 > 20 ? (index + (1 + index) * 5) / 3 : index + (0.5 + index) * 5}vw`,
-              paddingBottom: `${(index + index + 1) * 5 * 10 > 100 ? (index == 5 ? index * 9 : ((index + 1) * 5 * 10) / 4) : (index + index + 1) * 5 * 10}vh`,
-              paddingTop: `${index == 0 ? 30 : 0}vh`,
-            }}
-            className={` ${(index + 1) % 2 === 0 ? 'flex justify-end' : ''} `}
-            key={project.id}
-          >
-            {project.mobile ? (
-              <div className="w-50 scale-80 lg:w-80">
-                <div className="mockup-phone border-blue-900 shadow-2xl dark:shadow-blue-500/30">
-                  <div className="mockup-phone-camera" />
-                  <div className="mockup-phone-display">
-                    <img
-                      src={project.image_mobile}
-                      alt={project.title}
-                      className="h-full w-full object-cover"
-                    />
+      <div className="z-2 min-h-screen overflow-hidden">
+        {projects.map((project, index) => {
+          console.log('index ', index, index + (0.5 + index) * 5);
+          console.log('calculate ', (index + (1 + index) * 5) / 3);
+          return (
+            <div
+              style={{
+                [(index + 1) % 2 === 0 ? 'marginRight' : 'marginLeft']:
+                  `${index + (0.5 + index) * 5 > 14 ? (index + (1 + index) * 5) / 3 + 0.5 : index + (0.5 + index) * 5}vw`,
+                paddingBottom: `${(index * 2 + 1) * 5 * 10 > 100 ? (index == 5 ? index * 9 : ((index + 1) * 5 * 10) / 2.5) : (index * 2 + 1) * 5 * 10}vh`,
+                paddingTop: `${index == 0 ? 30 : 0}vh`,
+              }}
+              className={` ${(index + 1) % 2 === 0 ? 'flex justify-end' : ''} `}
+              key={project.id}
+            >
+              {project.mobile ? (
+                <div className="w-60 scale-80 lg:w-80">
+                  <div className="mockup-phone border-slate-200 shadow-2xl dark:border-blue-900 dark:shadow-blue-500/30">
+                    <div className="mockup-phone-camera" />
+                    <div className="mockup-phone-display">
+                      <img
+                        src={project.image_mobile}
+                        alt={project.title}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="mockup-browser relative w-80 border border-blue-800 bg-blue-900 shadow-2xl lg:w-100 dark:border-blue-900 dark:bg-blue-950 dark:shadow-blue-500/30">
-                <div className="mockup-browser-toolbar">
-                  <div className="input bg-blue-800 text-white">{project.title}</div>
+              ) : (
+                <div className="mockup-browser relative w-80 border border-slate-200 bg-slate-100 shadow-2xl lg:w-100 dark:border-blue-900 dark:bg-blue-950 dark:shadow-blue-500/30">
+                  <div className="mockup-browser-toolbar">
+                    <div className="input bg-slate-200 text-slate-700 dark:bg-blue-800 dark:text-white">
+                      {project.title}
+                    </div>
+                  </div>
+                  <div className="grid h-40 place-content-center lg:h-50">
+                    <figure className="relative h-40 w-full lg:h-50">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </figure>
+                  </div>
                 </div>
-                <div className="grid h-40 place-content-center lg:h-50">
-                  <figure className="relative h-40 w-full lg:h-50">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </figure>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <ModalImage

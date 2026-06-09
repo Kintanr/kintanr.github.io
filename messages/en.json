@@ -35,6 +35,8 @@
   "footer": {
     "title": "Let's work together",
     "subtitle": "Feel free to reach out for collaborations or just a friendly hello",
+    "description": "Crafting digital experiences and building solutions with passion and code.",
+    "reach_out": "Feel free to reach out for collaborations or just a friendly hello.",
     "tagline": "Crafted with passion and code."
   },
 
@@ -43,6 +45,9 @@
     "cancel": "Cancel",
     "filter_by": "Filter by",
     "back_home": "Back to Home",
-    "not_found_filter": "No {item} found with this filter"
+    "not_found_filter": "No {item} found with this filter",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "say_hello": "Say Hello"
   }
 }

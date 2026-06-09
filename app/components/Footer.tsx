@@ -26,6 +26,7 @@ import Link from 'next/link';
 export const Footer = () => {
   const t = useTranslations('footer');
   const nav = useTranslations('navbar');
+  const com = useTranslations('common');
   const router = useRouter();
   const pathname = usePathname();
 
@@ -128,7 +129,7 @@ export const Footer = () => {
   return (
     <motion.footer
       ref={ref}
-      className="fixed inset-x-0 bottom-0 z-0 max-h-[100vh] overflow-x-hidden overflow-y-auto bg-gradient-to-b from-slate-100 to-white pt-28 pb-4 md:h-screen md:overflow-hidden dark:from-slate-900 dark:to-slate-800"
+      className="fixed inset-x-0 bottom-0 z-0 max-h-[100vh] overflow-x-hidden overflow-y-auto bg-gradient-to-b from-slate-100 to-white pt-26 pb-4 md:h-screen md:overflow-hidden dark:from-slate-900 dark:to-slate-800"
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       <div className="relative">
@@ -138,13 +139,16 @@ export const Footer = () => {
               <div ref={marqueeRef} className="flex w-max py-2 whitespace-nowrap md:py-4">
                 {/* group 1 */}
                 <div className="flex">
-                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
-                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
-                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" /> {t('title')}{' '}
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-slate-700 md:text-5xl dark:text-white">
+                    <Sparkle className="h-5 w-5 pt-2 text-slate-700 md:h-9 md:w-9 dark:text-white" />{' '}
+                    {t('title')}{' '}
+                    <Sparkle className="h-5 w-5 pt-2 text-slate-700 md:h-9 md:w-9 dark:text-white" />{' '}
+                    {t('title')}{' '}
                   </span>
-                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-white md:text-5xl">
-                    <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />
-                    {t('title')} <Sparkle className="h-5 w-5 pt-2 text-white md:h-9 md:w-9" />{' '}
+                  <span className="flex gap-9 pr-10 pb-2 text-2xl text-slate-700 md:text-5xl dark:text-white">
+                    <Sparkle className="h-5 w-5 pt-2 text-slate-700 md:h-9 md:w-9 dark:text-white" />
+                    {t('title')}{' '}
+                    <Sparkle className="h-5 w-5 pt-2 text-slate-700 md:h-9 md:w-9 dark:text-white" />{' '}
                     {t('title')}{' '}
                   </span>
                 </div>
@@ -165,14 +169,12 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-10 pt-8 pb-10 md:grid-cols-4">
+          <div className="grid grid-cols-1 items-center gap-10 pt-15 pb-10 md:grid-cols-4">
             <div className="pr-10">
               {/* <h3 className="mb-5 text-3xl font-semibold text-slate-800 dark:text-white">
                 Kintan Umari
               </h3> */}
-              <p className="text-sm text-slate-600 dark:text-slate-300">
-                Crafting digital experiences and building solutions with passion and code.
-              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-300">{t('description')}</p>
 
               <div className="mt-7 flex gap-6">
                 {connectInfo.map((item, index) => {
@@ -185,7 +187,7 @@ export const Footer = () => {
                       rel="noopener noreferrer"
                       className="flex h-12 w-12 items-center justify-center rounded-full border-[0.5px] border-slate-300 bg-slate-200 p-2 transition-colors hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
                     >
-                      <Icon className="h-5 w-5 text-slate-200" />
+                      <Icon className="h-5 w-5 text-slate-700 dark:text-slate-200" />
                     </a>
                   );
                 })}
@@ -193,7 +195,9 @@ export const Footer = () => {
             </div>
             <div className="col-span-2 flex justify-between md:justify-around">
               <div>
-                <p className="mb-7 text-xl font-bold text-white">Quick Links</p>
+                <p className="mb-5 text-lg font-bold text-slate-700 md:mb-7 md:text-xl dark:text-white">
+                  {com('quickLinks')}
+                </p>
 
                 <div>
                   {menuList.map((item, index) => {
@@ -222,7 +226,9 @@ export const Footer = () => {
               </div>
 
               <div>
-                <p className="mb-7 text-xl font-bold text-white">Contact</p>
+                <p className="mb-5 text-lg font-bold text-slate-700 md:mb-7 md:text-xl dark:text-white">
+                  {com('contact')}
+                </p>
 
                 <div className="flex flex-col gap-y-6">
                   {contactInfo.map((item, index) => {
@@ -254,13 +260,11 @@ export const Footer = () => {
               </h3> */}
               <div className="flex gap-4">
                 <Sparkle className="text-yellow-500" />
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Feel free to reach out for collaborations or just a friendly hello.
-                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">{t('reach_out')}</p>
               </div>
 
               <div className="mt-6 inline-flex cursor-pointer rounded-xl bg-gradient-to-r from-blue-500 to-yellow-500 bg-[length:200%_200%] p-[1px] transition-all duration-500 hover:bg-right">
-                <div className="rounded-xl bg-slate-900 px-6 py-3 text-white">
+                <div className="text-white-700 rounded-xl bg-slate-50 px-6 py-3 dark:bg-slate-900 dark:text-white">
                   <a
                     className="flex items-center gap-2"
                     href="mailto:kintanumari178@gmail.com"
@@ -268,7 +272,7 @@ export const Footer = () => {
                     rel="noopener noreferrer"
                   >
                     <MoveRight size={16} />
-                    <span>Say hello</span>
+                    <span>{com('say_hello')}</span>
                   </a>
                 </div>
               </div>
@@ -284,7 +288,6 @@ export const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="border-t border-slate-200 pt-0 dark:border-slate-800"
           >
             <div className="space-y-4 text-center">
               {/* <div className="flex items-center justify-center gap-2">
@@ -294,7 +297,7 @@ export const Footer = () => {
                   <p className="text-sm text-slate-600 dark:text-slate-400">Frontend Developer</p>
                 </div>
               </div> */}
-              <p className="text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-500 md:text-sm dark:text-slate-400">
                 © {new Date().getFullYear()} Kintan Umari. {t('tagline')}
               </p>
             </div>

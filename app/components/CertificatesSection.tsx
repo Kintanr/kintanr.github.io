@@ -85,8 +85,8 @@ export const CertificatesSection = () => {
               Professional Certifications
             </span>
           </div> */}
-          <h2 className="mb-4 text-5xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
+          <h2 className="mb-4 text-3xl font-bold text-blue-500 md:text-6xl">{t('title')}</h2>
+          <p className="text-slate-600 md:text-lg dark:text-slate-300">{t('subtitle')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -100,19 +100,19 @@ export const CertificatesSection = () => {
               className="group cursor-hover relative"
             >
               <div className="hover-3d mb-10">
-                <div className="card max-w-96 rounded-3xl bg-slate-900 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[size:28px_28px] p-0 text-white dark:bg-slate-800">
+                <div className="card max-w-96 rounded-3xl bg-slate-100 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_2px,transparent_2px)] bg-[size:28px_28px] p-0 text-white dark:bg-slate-800 dark:bg-slate-900">
                   <div className="card-body p-4">
                     <figure className="max-h-60 max-w-100 rounded-2xl">
                       <img src={cert.image} alt={cert.name} onClick={() => openModal(cert)} />
                     </figure>
 
-                    <div className="mb-4 text-lg opacity-70">{cert.name}</div>
-                    <div className="text-sm text-slate-300 opacity-70 dark:text-slate-400">
+                    <div className="mb-4 text-lg text-slate-900 opacity-70 dark:text-white">
+                      {cert.name}
+                    </div>
+                    <div className="text-sm text-slate-700 opacity-70 dark:text-slate-400">
                       {cert.publisher}
                     </div>
-                    <div className="text-xs text-slate-400 opacity-70 dark:text-slate-500">
-                      {cert.year}
-                    </div>
+                    <div className="text-xs text-slate-500 opacity-70">{cert.year}</div>
                   </div>
                 </div>
 

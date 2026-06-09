@@ -34,8 +34,19 @@ export const SkillsSection = () => {
   const ITEM_WIDTH = 120;
   const GAP = 40;
   // Move from first item centered to last item centered
-  const totalDistance = (skills.length - 1) * (ITEM_WIDTH + GAP);
-  const x = useTransform(scrollYProgress, [0, 1], [0, -totalDistance]);
+
+  const totalContentWidth = skills.length * ITEM_WIDTH + (skills.length - 1) * GAP;
+
+  const origintotalDistance = (skills.length - 1) * (ITEM_WIDTH + GAP);
+  // const totalDistance = totalContentWidth - window.innerWidth;
+  // console.log('total content width ', totalContentWidth);
+  // console.log('origin distance ', origintotalDistance);
+  // console.log('what data ', totalDistance);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -origintotalDistance - 2.8 * window.innerWidth]
+  );
 
   return (
     <div
@@ -52,10 +63,10 @@ export const SkillsSection = () => {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h2 className="mb-2 pb-4 text-5xl font-bold text-blue-500 md:text-6xl">
+              <h2 className="mb-2 pb-4 text-3xl font-bold text-blue-500 md:text-6xl">
                 {t('title')}
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">{t('subtitle')}</p>
+              <p className="text-slate-600 md:text-lg dark:text-slate-300">{t('subtitle')}</p>
             </motion.div>
           </div>
 

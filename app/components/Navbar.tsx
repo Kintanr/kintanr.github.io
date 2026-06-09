@@ -121,7 +121,7 @@ export const Navbar = () => {
 
       <div
         onClick={toggleLanguage}
-        className="relative h-10 w-20 cursor-pointer rounded-full bg-neutral-200 p-1 transition-colors duration-300 hover:bg-neutral-300 dark:bg-slate-800 dark:hover:bg-slate-700"
+        className="relative h-10 w-20 cursor-pointer rounded-full bg-slate-200 p-1 transition-colors duration-300 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700"
       >
         <motion.div
           animate={{ x: isEnglish ? [0, 65, 40] : [40, -25, 0] }}
@@ -187,7 +187,7 @@ export const Navbar = () => {
 
                 {/* hamburger icon */}
                 <svg
-                  className="swap-off fill-current"
+                  className="swap-off fill-current text-slate-700 dark:text-slate-300"
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
                   height="32"
@@ -198,7 +198,7 @@ export const Navbar = () => {
 
                 {/* close icon */}
                 <svg
-                  className="swap-on fill-current"
+                  className="swap-on fill-current text-slate-700 dark:text-slate-300"
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
                   height="32"
@@ -213,7 +213,7 @@ export const Navbar = () => {
               {menuOpen ? (
                 <ul
                   tabIndex={-1}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                  className="dropdown-content menu rounded-box z-1 w-52 bg-slate-100 p-2 shadow-sm shadow-xl dark:bg-slate-900"
                 >
                   <MenuItemList className="flex flex-col items-start gap-4 px-5 py-3 text-left" />
                 </ul>
