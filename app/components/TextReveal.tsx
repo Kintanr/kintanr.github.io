@@ -142,7 +142,7 @@ export default function ScrollRevealText({ text, active: propActive = false, pro
         return (
           <span
             key={i}
-            className="inline-block overflow-hidden px-1 pb-8 text-[2rem] font-bold text-yellow-500 md:text-[10rem]"
+            className="inline-block overflow-hidden px-1 pb-8 text-[2rem] font-bold text-yellow-500 md:text-[6rem] lg:text-[10rem]"
           >
             <span
               className="inline-block"

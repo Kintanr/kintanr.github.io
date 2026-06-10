@@ -42,10 +42,13 @@ export const SkillsSection = () => {
   // console.log('total content width ', totalContentWidth);
   // console.log('origin distance ', origintotalDistance);
   // console.log('what data ', totalDistance);
+
+  const screenWidth = window.innerWidth;
+
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, -origintotalDistance - 2.8 * window.innerWidth]
+    [0, screenWidth >= 768 ? -origintotalDistance : -origintotalDistance - 2.8 * screenWidth]
   );
 
   return (

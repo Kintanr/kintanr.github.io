@@ -23,7 +23,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Kintan Umari',
+  title: {
+    default: 'Kintan Umari',
+    template: '%s | Kintan Umari',
+  },
   description: "Kintan Umari's personal website",
 };
 
