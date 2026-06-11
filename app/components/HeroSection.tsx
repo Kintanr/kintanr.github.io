@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'motion/react';
+import { motion, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
 import { Code2, Sparkles, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
@@ -34,6 +34,18 @@ export const HeroSection = () => {
   const codeElements = ['{ }', '<div>', 'const', '=>', '</>', 'useState', 'return'];
 
   const t = useTranslations('homepage');
+
+  const [index, setIndex] = useState(0);
+
+  const images = ['/img/picture-1.png', '/img/picture-2.jpg'];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -146,12 +158,30 @@ export const HeroSection = () => {
         >
           <div className="mx-auto h-48 w-48 rounded-full bg-gradient-to-r from-blue-500 to-yellow-500 p-1 shadow-2xl shadow-blue-500/50">
             <div className="relative h-full w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-              <Image
-                src="/img/picture-1.png"
-                alt="Kintan Umari"
-                fill
-                className="rounded-full object-cover"
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={images[index]}
+                  src={images[index]}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                  initial={{
+                    opacity: 0,
+                    scale: 1,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1.15,
+                  }}
+                  exit={{
+                    opacity: 0.2,
+                    scale: 1.25,
+                  }}
+                  transition={{
+                    duration: 5,
+                    ease: 'linear',
+                  }}
+                />
+              </AnimatePresence>
             </div>
           </div>
           <motion.div

@@ -13,7 +13,7 @@ import { scrollToSection } from '@/utils/navigate';
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const { theme, setTheme, systemTheme } = useTheme();
   const resolvedTheme = theme === 'system' ? systemTheme : theme;

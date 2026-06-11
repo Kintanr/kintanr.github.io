@@ -23,7 +23,7 @@ export default function SplitScrambleHero() {
       frame++;
 
       const revealCount = Math.floor((frame / totalFrames) * FINAL_TEXT.length);
-      console.log(FINAL_TEXT.length, revealCount);
+      // console.log(FINAL_TEXT.length, revealCount);
 
       let output = '';
 

@@ -11,6 +11,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -62,6 +63,7 @@ export default async function RootLayout({ children, params }: Props) {
               <main className="relative z-10">{children}</main>
               <div id="contact" className="h-[100vh]" />
               <Footer />
+              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
             </div>
           </ThemeProviders>
         </NextIntlClientProvider>

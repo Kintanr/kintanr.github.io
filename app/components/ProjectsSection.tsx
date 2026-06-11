@@ -153,8 +153,8 @@ export const ProjectsSection = () => {
 
       <div className="z-2 min-h-screen overflow-hidden">
         {projects.map((project, index) => {
-          console.log('index ', index, index + (0.5 + index) * 5);
-          console.log('calculate ', (index + (1 + index) * 5) / 3);
+          // console.log('index ', index, index + (0.5 + index) * 5);
+          // console.log('calculate ', (index + (1 + index) * 5) / 3);
           return (
             <div
               style={{

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform, useInView } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Code2, Palette, Zap, GitBranch, Layout, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import skills from '../data/skills.json';
@@ -43,7 +43,23 @@ export const SkillsSection = () => {
   // console.log('origin distance ', origintotalDistance);
   // console.log('what data ', totalDistance);
 
-  const screenWidth = window.innerWidth;
+  // const screenWidth = window.innerWidth;
+
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+    setScreenWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const x = useTransform(
     scrollYProgress,
