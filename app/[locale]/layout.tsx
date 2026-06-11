@@ -46,10 +46,15 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
 
+  // Enable static rendering — MUST be called before any next-intl function
+  setRequestLocale(locale);
+
+  const messages = await getMessages();
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <ThemeProviders>
             <div className="relative">
               <div className="hidden md:block">
