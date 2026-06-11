@@ -8,11 +8,6 @@ import projectsData from '../../data/projects.json';
 import Image from 'next/image';
 import { ModalImage } from '../../components/ModalImage';
 import { useTranslations } from 'next-intl';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Projects',
-};
 
 export default function ProjectsPage() {
   const t = useTranslations('projects');
