@@ -1,8 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, AnimatePresence } from 'motion/react';
-import { Code2, Sparkles, Zap } from 'lucide-react';
-import Image from 'next/image';
+import { Code2, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export const HeroSection = () => {
@@ -10,10 +9,10 @@ export const HeroSection = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // 2. Tambahkan efek spring agar gerakan terasa "kenyal" dan halus
+  // Spring config for smooth mouse tracking (reserved for future parallax use)
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
+  useSpring(mouseX, springConfig);
+  useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -31,93 +30,47 @@ export const HeroSection = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
-  const codeElements = ['{ }', '<div>', 'const', '=>', '</>', 'useState', 'return'];
-
   const t = useTranslations('homepage');
 
   const [index, setIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
 
   const images = ['/img/picture-1.png', '/img/picture-2.jpg'];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 1000);
+      setIndex((prev) => {
+        setPrevIndex(prev);
+        return (prev + 1) % images.length;
+      });
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);
+
+  // Wave clip-path — foto baru naik seperti gelombang dari bawah, foto lama tetap di belakang
+  const waveVariants = {
+    enter: {
+      clipPath:
+        'polygon(0% 110%, 10% 100%, 20% 110%, 30% 100%, 40% 110%, 50% 100%, 60% 110%, 70% 100%, 80% 110%, 90% 100%, 100% 110%, 100% 110%, 0% 110%)',
+      opacity: 1,
+      scale: 1.05,
+    },
+    center: {
+      clipPath:
+        'polygon(0% 0%, 10% 0%, 20% 0%, 30% 0%, 40% 0%, 50% 0%, 60% 0%, 70% 0%, 80% 0%, 90% 0%, 100% 0%, 100% 110%, 0% 110%)',
+      opacity: 1,
+      scale: 1,
+    },
+  };
 
   return (
     <section
       id="home"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-yellow-50 dark:from-slate-900 dark:via-blue-950 dark:to-slate-900"
     >
-      {/* Animated gradient orbs */}
-      {/* Orb 1 - Mengikuti Mouse */}
-      {/* <motion.div
-        style={{
-          x: smoothX,
-          y: smoothY,
-          background: 'radial-gradient(circle, rgba(238, 214, 34, 0.25), transparent 70%)',
-        }}
-        className="absolute top-1/4 left-1/4 h-[500px] w-[500px] rounded-full blur-3xl"
-      /> */}
-
-      {/* Orb 2 - Bergerak Berlawanan (Parallax Effect) */}
-      {/* <motion.div
-        style={{
-          x: useSpring(mouseX, { stiffness: 50, damping: 20 }), // Lebih lambat
-          y: useSpring(mouseY, { stiffness: 50, damping: 20 }),
-          translateX: '-50%', // Agar tetap di area kanan bawah
-          background: 'radial-gradient(circle, rgba(85, 88, 247, 0.13), transparent 70%)',
-        }}
-        className="absolute right-1/4 bottom-1/4 h-[600px] w-[600px] rounded-full blur-3xl"
-      /> */}
-
-      {/* Floating code elements */}
-      {/* Floating Code Elements */}
-      {/* {codeElements.map((code, index) => (
-        <motion.div
-          key={index}
-          style={{
-            left: `${15 + index * 12}%`,
-            top: `${20 + (index % 3) * 20}%`,
-            // Tambahkan sedikit pengaruh kursor pada teks juga
-            x: smoothX,
-            y: smoothY,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: [0.2, 0.5, 0.2],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 5 + index,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute font-mono text-2xl text-blue-600/20 select-none md:text-4xl dark:text-blue-300/10"
-        >
-          {code}
-        </motion.div>
-      ))} */}
-
       {/* Main content */}
       <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 px-4 py-2 backdrop-blur-sm dark:border-cyan-400/30">
-            <Sparkles className="h-4 w-4 text-cyan-500 dark:text-cyan-400" />
-            <span className="text-sm text-slate-600 dark:text-slate-300">
-              Available for new projects
-            </span>
-          </div>
-        </motion.div> */}
-
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -150,40 +103,14 @@ export const HeroSection = () => {
           {t('description')}
         </motion.p>
 
+        {/* Profile Photo with Wave Transition */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1.1 }}
           className="relative inline-block"
         >
-          <div className="mx-auto h-48 w-48 rounded-full bg-gradient-to-r from-blue-500 to-yellow-500 p-1 shadow-2xl shadow-blue-500/50">
-            <div className="relative h-full w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={images[index]}
-                  src={images[index]}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                  initial={{
-                    opacity: 0,
-                    scale: 1,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1.15,
-                  }}
-                  exit={{
-                    opacity: 0.2,
-                    scale: 1.25,
-                  }}
-                  transition={{
-                    duration: 5,
-                    ease: 'linear',
-                  }}
-                />
-              </AnimatePresence>
-            </div>
-          </div>
+          {/* Pulse glow ring */}
           <motion.div
             animate={{
               scale: [1, 1.2, 1],
@@ -192,6 +119,70 @@ export const HeroSection = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-yellow-400 to-blue-500 blur-xl"
           />
+
+          {/* Gradient border */}
+          <div className="mx-auto h-48 w-48 rounded-full bg-gradient-to-r from-blue-500 to-yellow-500 p-1 shadow-2xl shadow-blue-500/50">
+            <div className="relative h-full w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+              {/* Foto sebelumnya — diam di belakang sebagai background */}
+              {prevIndex !== null && (
+                <img
+                  src={images[prevIndex]}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 z-0 h-full w-full object-cover"
+                />
+              )}
+
+              {/* Foto baru — animasi gelombang di atas foto lama */}
+              <AnimatePresence mode="sync">
+                <motion.img
+                  key={images[index]}
+                  src={images[index]}
+                  alt="Kintan Umari"
+                  className="absolute inset-0 z-10 h-full w-full object-cover"
+                  variants={waveVariants}
+                  initial="enter"
+                  animate="center"
+                  transition={{
+                    duration: 0.9,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    clipPath: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] },
+                    scale: { duration: 0.9 },
+                  }}
+                />
+              </AnimatePresence>
+
+              {/* Ripple overlay saat pergantian */}
+              <AnimatePresence>
+                <motion.div
+                  key={`ripple-${index}`}
+                  className="pointer-events-none absolute inset-0 z-20 rounded-full"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 110%, rgba(99,179,237,0.55) 0%, transparent 65%)',
+                  }}
+                  initial={{ scaleY: 0, originY: 1, opacity: 1 }}
+                  animate={{ scaleY: [0, 1.3, 0], opacity: [0.9, 0.4, 0] }}
+                  transition={{ duration: 0.9, ease: 'easeOut' }}
+                />
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          {/* <div className="mt-3 flex justify-center gap-2">
+            {images.map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  scale: i === index ? 1.3 : 1,
+                  opacity: i === index ? 1 : 0.35,
+                }}
+                transition={{ duration: 0.3 }}
+                className="h-1.5 w-1.5 rounded-full bg-blue-500"
+              />
+            ))}
+          </div> */}
         </motion.div>
 
         <motion.div
@@ -212,18 +203,6 @@ export const HeroSection = () => {
           })}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 transform"
-      >
-        <div className="flex h-10 w-6 justify-center rounded-full border-2 border-slate-400 pt-2 dark:border-slate-500">
-          <div className="h-3 w-1 rounded-full bg-gradient-to-b from-yellow-400 to-blue-500" />
-        </div>
-      </motion.div> */}
     </section>
   );
 };
